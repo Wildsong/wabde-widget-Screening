@@ -44,7 +44,12 @@ define([
   'dojo/promise/all',
   'dojo/keys',
   'dijit/focus',
-  "dojo/_base/event"
+  "dojo/_base/event",
+  "esri/arcadeProfiles/fieldCalculateProfile",
+  'esri/arcade/arcade',
+  'esri/arcade/Feature',
+  'esri/support/expressionUtils',
+  'esri/arcadeProfiles/utils'
 ], function (
   declare,
   template,
@@ -76,7 +81,12 @@ define([
   all,
   keys,
   focusUtil,
-  Event
+  Event,
+  fieldCalculateProfile,
+  Arcade,
+  ArcadeFeature,
+  expressionUtils,
+  utils
 ) {
   return declare([BaseWidget, _WidgetsInTemplateMixin, Evented], {
     // Set base class for custom impactSummaryReport widget
@@ -160,7 +170,7 @@ define([
       this._layerDefinition = jimuUtils.getFeatureLayerDefinition(this.featureLayer);
       this._lengthAnalysisUnitsArray = ["Feet", "Miles", "Meters", "Kilometers"];
       this._areaAnalysisUnitsArray = ["SquareFeet", "Acres", "SquareMeters", "SquareKilometers",
-                                       "Hectares","SquareMiles"];
+        "Hectares", "SquareMiles"];
       this.own(on(this.impactSummaryLayerMaxRecordHint, "click", lang.hitch(this, function (evt) {
         evt.stopPropagation();
         evt.preventDefault();
@@ -276,26 +286,38 @@ define([
                             }
                             //create detailed report
                             this._createLayerDetails(featureIntersectResultArr,
-                              this.featureLayer.geometryType);
-                            this._filterPrintDataObjAccToConfiguredFields(this.configuredField);
-                            // remove disable class from layer field icon container which
-                            // indicates that layer has finished processing
-                            domClass.remove(this.impactSummaryLayerField,
-                              "esriCTImpactSummaryLayerFieldIconDisabled");
+                              this.featureLayer.geometryType).then(lang.hitch(this, function () {
+                                this._filterPrintDataObjAccToConfiguredFields(this.configuredField);
+                                // remove disable class from layer field icon container which
+                                // indicates that layer has finished processing
+                                domClass.remove(this.impactSummaryLayerField,
+                                  "esriCTImpactSummaryLayerFieldIconDisabled");
+                                //remove disable class from layer section container
+                                domClass.remove(this.layerTitleAndFieldParentContainer,
+                                  "esriCTLayerSectionDisabled");
+                                this._featureIntersectResultArr = featureIntersectResultArr;
+                                // Once all the geometry operations are performed and
+                                // report is generated resolve the deferred.
+                                this._showReport();
+                                deferred.resolve(this._getReportLayerDetails(featureIntersectResultArr));
+                              }));
+
                           } else {
                             this._pushDataInPrintDataObj(this.configuredLayerLabel, null, null);
                             this._printData = {};
                             this._printData = lang.clone(this._printCompleteData);
                             this._showMessage(this.nls.reportsTab.noDetailsAvailableText);
+
+                            //remove disable class from layer section container
+                            domClass.remove(this.layerTitleAndFieldParentContainer,
+                              "esriCTLayerSectionDisabled");
+                            this._featureIntersectResultArr = featureIntersectResultArr;
+                            // Once all the geometry operations are performed and
+                            // report is generated resolve the deferred.
+                            this._showReport();
+                            deferred.resolve(this._getReportLayerDetails(featureIntersectResultArr));
                           }
-                          //remove disable class from layer section container
-                          domClass.remove(this.layerTitleAndFieldParentContainer,
-                            "esriCTLayerSectionDisabled");
-                          this._featureIntersectResultArr = featureIntersectResultArr;
-                          // Once all the geometry operations are performed and
-                          // report is generated resolve the deferred.
-                          this._showReport();
-                          deferred.resolve(this._getReportLayerDetails(featureIntersectResultArr));
+
                         }));
                     }
                   }));
@@ -377,7 +399,7 @@ define([
         })
       }
       domAttr.set(this.impactSummaryLayerTitle, "innerHTML", jimuUtils.sanitizeHTML(this.configuredLayerLabel));
-      domAttr.set(this.impactSummaryLayerTitle, "title",  jimuUtils.sanitizeHTML(this.configuredLayerLabel));
+      domAttr.set(this.impactSummaryLayerTitle, "title", jimuUtils.sanitizeHTML(this.configuredLayerLabel));
       domAttr.set(this.layerTitleAndFieldParentContainer, 'aria-label', layerAriaLabel);
     },
 
@@ -798,77 +820,103 @@ define([
      * @memberOf Screening/impactSummaryReport/impactSummaryReport
      */
     _updateFormattedAttribute: function (intersectFeatureArr) {
-      array.forEach(intersectFeatureArr, lang.hitch(this, function (intersectedFeature, i) {
-        var formatedAttrs, unitData, objectId, hideMeasurementDetails, layerInfosObj,
-          layerInfosPopupInfo;
-        objectId = intersectedFeature.attributes[this.featureLayer.objectIdField];
-        layerInfosPopupInfo = null;
-        //if feature is not intersecting to polygons hide their measurement info
-        if (this.intersectingFeatureIds.indexOf(objectId) === -1) {
-          hideMeasurementDetails = true;
+      var def = new Deferred();
+      var defList = [];
+      var layerInfosObj, layerInfosPopupInfo = null;
+      //get layer info and it's popupInfo if layer is not a featureCollection layer
+      if (!this.isFeatureCollectionLayer) {
+        layerInfosObj = this.layerInfosObj.getLayerInfoById(this.featureLayer.id);
+        layerInfosPopupInfo = layerInfosObj.originOperLayer.popupInfo;
+        if (!layerInfosPopupInfo && layerInfosObj &&
+          layerInfosObj.getPopupInfo && layerInfosObj.getPopupInfo()) {
+          layerInfosPopupInfo = layerInfosObj.getPopupInfo();
         }
-        if (!this.isFeatureCollectionLayer) {
-          layerInfosObj = this.layerInfosObj.getLayerInfoById(this.featureLayer.id);
-          layerInfosPopupInfo = layerInfosObj.originOperLayer.popupInfo;
-        }
-        formatedAttrs = this._getFormatedAttrs(
-          lang.clone(intersectedFeature.attributes),
-          this.featureLayer.fields,
-          layerInfosPopupInfo
-        );
-        intersectFeatureArr[i].setAttributes(formatedAttrs);
-        array.forEach(this.featureLayer.fields, lang.hitch(this, function (field) {
-          var fieldValue;
-          if (!(intersectFeatureArr[i].attributes.hasOwnProperty(field.name))) {
-            intersectFeatureArr[i].attributes[field.name] =
-              this.nls.reportsTab.noDataText;
+      }
+
+      if (layerInfosPopupInfo && layerInfosPopupInfo.expressionInfos &&
+        layerInfosPopupInfo.expressionInfos.length > 0) {
+        var parsedExpressionInfos = this.parseArcadeExpressions(layerInfosPopupInfo.expressionInfos);
+        array.forEach(intersectFeatureArr, lang.hitch(this, function (feature) {
+          defList.push(this.combineFeatureAttributesAndExpressionResolutions(
+            feature, layerInfosObj, layerInfosPopupInfo.expressionInfos, parsedExpressionInfos
+          ));
+        }));
+      }
+      all(defList).then(lang.hitch(this, function (expressionResolvedAttributes) {
+        array.forEach(intersectFeatureArr, lang.hitch(this, function (intersectedFeature, i) {
+          var formattedAttrs, unitData, objectId, hideMeasurementDetails, attrsToFormat;
+          objectId = intersectedFeature.attributes[this.featureLayer.objectIdField];
+          //if feature is not intersecting to polygons hide their measurement info
+          if (this.intersectingFeatureIds.indexOf(objectId) === -1) {
+            hideMeasurementDetails = true;
           }
-          if (intersectFeatureArr[i].attributes.hasOwnProperty(field.name)) {
-            fieldValue = intersectFeatureArr[i].attributes[field.name];
-            if (fieldValue === undefined || fieldValue === "" || fieldValue === null) {
-              intersectFeatureArr[i].attributes[field.name] =
-                this.nls.reportsTab.noDataText;
-            } else if (lang.trim(fieldValue.toString()) === "") {
+          //if fields has any Arcade expression use the ExpressionResolvedAttributes else use the feature attributes
+          if (expressionResolvedAttributes && expressionResolvedAttributes.length > 0 && expressionResolvedAttributes[i]) {
+            attrsToFormat = lang.clone(expressionResolvedAttributes[i]);
+          } else {
+            attrsToFormat = lang.clone(intersectedFeature.attributes);
+          }
+          formattedAttrs = this._getFormatedAttrs(
+            attrsToFormat,
+            this.featureLayer.fields,
+            layerInfosPopupInfo
+          );
+          intersectFeatureArr[i].setAttributes(formattedAttrs);
+          array.forEach(this.featureLayer.fields, lang.hitch(this, function (field) {
+            var fieldValue;
+            if (!(intersectFeatureArr[i].attributes.hasOwnProperty(field.name))) {
               intersectFeatureArr[i].attributes[field.name] =
                 this.nls.reportsTab.noDataText;
             }
+            if (intersectFeatureArr[i].attributes.hasOwnProperty(field.name)) {
+              fieldValue = intersectFeatureArr[i].attributes[field.name];
+              if (fieldValue === undefined || fieldValue === "" || fieldValue === null) {
+                intersectFeatureArr[i].attributes[field.name] =
+                  this.nls.reportsTab.noDataText;
+              } else if (lang.trim(fieldValue.toString()) === "") {
+                intersectFeatureArr[i].attributes[field.name] =
+                  this.nls.reportsTab.noDataText;
+              }
+            }
+          }));
+          //hide measurement details if not intersecting to polygons
+          if (hideMeasurementDetails && this.featureLayer.geometryType === "esriGeometryPolygon") {
+            this._squareFeetUnitData.push(0);
+            this._acresUnitData.push(0);
+            this._squareMetersUnitData.push(0);
+            this._squareKilometersUnitData.push(0);
+            this._squareMilesUnitData.push(0);
+            this._hectaresUnitData.push(0);
+          } else if (hideMeasurementDetails && this.featureLayer.geometryType === "esriGeometryPolyline") {
+            this._feetUnitData.push(0);
+            this._milesUnitData.push(0);
+            this._metersUnitData.push(0);
+            this._kilometersUnitData.push(0);
+          } else {
+            switch (this.featureLayer.geometryType) {
+              case "esriGeometryPolygon":
+                unitData = geometryUtils.getAreaOfGeometry(intersectedFeature.geometry);
+                this._squareFeetUnitData.push(unitData.squareFeet);
+                this._acresUnitData.push(unitData.acres);
+                this._squareMetersUnitData.push(unitData.squareMeters);
+                this._squareKilometersUnitData.push(unitData.squareKilometer);
+                this._squareMilesUnitData.push(unitData.squareMiles);
+                this._hectaresUnitData.push(unitData.hectares);
+                break;
+              case "esriGeometryPolyline":
+                unitData = geometryUtils.getLengthOfGeometry(intersectedFeature.geometry);
+                this._feetUnitData.push(unitData.feet);
+                this._milesUnitData.push(unitData.miles);
+                this._metersUnitData.push(unitData.meters);
+                this._kilometersUnitData.push(unitData.kilometers);
+                break;
+            }
           }
         }));
-        //hide measurement details if not intersecting to polygons
-        if (hideMeasurementDetails && this.featureLayer.geometryType === "esriGeometryPolygon") {
-          this._squareFeetUnitData.push(0);
-          this._acresUnitData.push(0);
-          this._squareMetersUnitData.push(0);
-          this._squareKilometersUnitData.push(0);
-          this._squareMilesUnitData.push(0);
-          this._hectaresUnitData.push(0);
-        } else if (hideMeasurementDetails && this.featureLayer.geometryType === "esriGeometryPolyline") {
-          this._feetUnitData.push(0);
-          this._milesUnitData.push(0);
-          this._metersUnitData.push(0);
-          this._kilometersUnitData.push(0);
-        } else {
-          switch (this.featureLayer.geometryType) {
-            case "esriGeometryPolygon":
-              unitData = geometryUtils.getAreaOfGeometry(intersectedFeature.geometry);
-              this._squareFeetUnitData.push(unitData.squareFeet);
-              this._acresUnitData.push(unitData.acres);
-              this._squareMetersUnitData.push(unitData.squareMeters);
-              this._squareKilometersUnitData.push(unitData.squareKilometer);
-              this._squareMilesUnitData.push(unitData.squareMiles);
-              this._hectaresUnitData.push(unitData.hectares);
-              break;
-            case "esriGeometryPolyline":
-              unitData = geometryUtils.getLengthOfGeometry(intersectedFeature.geometry);
-              this._feetUnitData.push(unitData.feet);
-              this._milesUnitData.push(unitData.miles);
-              this._metersUnitData.push(unitData.meters);
-              this._kilometersUnitData.push(unitData.kilometers);
-              break;
-          }
-        }
+        def.resolve(intersectFeatureArr);
       }));
-      return intersectFeatureArr;
+
+      return def;
     },
 
     /**
@@ -893,47 +941,52 @@ define([
       var j, fieldData, currentFieldObj,
         currentFieldText, fieldName, configuredFieldLength;
       configuredFieldLength = Object.keys(this.configuredField).length;
-      intersectFeatureArr = this._updateFormattedAttribute(intersectFeatureArr);
-      this._pushDataInPrintDataObj(this.configuredLayerLabel, null, null);
-      for (fieldName in this.configuredField) {
-        currentFieldObj = this.configuredField[fieldName];
-        currentFieldText = this._getFieldText(currentFieldObj, fieldName);
-        this._printCompleteData.cols.push(currentFieldText);
-        for (j = 0; j < intersectFeatureArr.length; j++) {
-          fieldData = intersectFeatureArr[j].attributes[fieldName];
-          if (fieldData || fieldData === 0) {
-            this._pushDataInPrintDataObj(null, j, fieldData);
-          } else {
-            this._pushDataInPrintDataObj(null, j, "");
-          }
-          //Add data in unit info array
-          switch (geometryType) {
-            case "esriGeometryPolyline":
-              if (this._printCompleteData.cols.length === configuredFieldLength) {
-                this._feetUnitInfo.push(this._feetUnitData[j]);
-                this._milesUnitInfo.push(this._milesUnitData[j]);
-                this._metersUnitInfo.push(this._metersUnitData[j]);
-                this._kilometersUnitInfo.push(this._kilometersUnitData[j]);
-              }
-              break;
-            case "esriGeometryPolygon":
-              if (this._printCompleteData.cols.length === configuredFieldLength) {
-                this._squareFeetUnitInfo.push(this._squareFeetUnitData[j]);
-                this._acresUnitInfo.push(this._acresUnitData[j]);
-                this._squareMetersUnitInfo.push(this._squareMetersUnitData[j]);
-                this._squareKilometersUnitInfo.push(this._squareKilometersUnitData[j]);
-                this._squareMilesUnitInfo.push(this._squareMilesUnitData[j]);
-                this._hectaresUnitInfo.push(this._hectaresUnitData[j]);
-              }
-              break;
-            case "esriGeometryPoint":
-              if (this._printCompleteData.cols.length === configuredFieldLength) {
-                this._countUnitInfo.push(1);
-              }
-              break;
+      var def = new Deferred();
+      this._updateFormattedAttribute(intersectFeatureArr).then(lang.hitch(this, function (result) {
+        intersectFeatureArr = result;
+        this._pushDataInPrintDataObj(this.configuredLayerLabel, null, null);
+        for (fieldName in this.configuredField) {
+          currentFieldObj = this.configuredField[fieldName];
+          currentFieldText = this._getFieldText(currentFieldObj, fieldName);
+          this._printCompleteData.cols.push(currentFieldText);
+          for (j = 0; j < intersectFeatureArr.length; j++) {
+            fieldData = intersectFeatureArr[j].attributes[fieldName];
+            if (fieldData || fieldData === 0) {
+              this._pushDataInPrintDataObj(null, j, fieldData);
+            } else {
+              this._pushDataInPrintDataObj(null, j, "");
+            }
+            //Add data in unit info array
+            switch (geometryType) {
+              case "esriGeometryPolyline":
+                if (this._printCompleteData.cols.length === configuredFieldLength) {
+                  this._feetUnitInfo.push(this._feetUnitData[j]);
+                  this._milesUnitInfo.push(this._milesUnitData[j]);
+                  this._metersUnitInfo.push(this._metersUnitData[j]);
+                  this._kilometersUnitInfo.push(this._kilometersUnitData[j]);
+                }
+                break;
+              case "esriGeometryPolygon":
+                if (this._printCompleteData.cols.length === configuredFieldLength) {
+                  this._squareFeetUnitInfo.push(this._squareFeetUnitData[j]);
+                  this._acresUnitInfo.push(this._acresUnitData[j]);
+                  this._squareMetersUnitInfo.push(this._squareMetersUnitData[j]);
+                  this._squareKilometersUnitInfo.push(this._squareKilometersUnitData[j]);
+                  this._squareMilesUnitInfo.push(this._squareMilesUnitData[j]);
+                  this._hectaresUnitInfo.push(this._hectaresUnitData[j]);
+                }
+                break;
+              case "esriGeometryPoint":
+                if (this._printCompleteData.cols.length === configuredFieldLength) {
+                  this._countUnitInfo.push(1);
+                }
+                break;
+            }
           }
         }
-      }
+        def.resolve();
+      }));
+      return def.promise;
     },
 
     /**
@@ -1054,6 +1107,26 @@ define([
           }
         }
       }));
+      if (popupInfo && popupInfo.expressionInfos) {
+        array.forEach(popupInfo.expressionInfos, lang.hitch(this, function (_field, i) {
+          var fieldName = "expression/" + _field.name;
+          if (nulls.indexOf(attrs[fieldName]) !== -1) {
+            return;
+          }
+
+          if (_field.returnType === "date") {
+            aliasAttrs[fieldName] = jimuUtils.fieldFormatter.getFormattedDate(
+              attrs[fieldName], getFormatInfo(fieldName)
+            );
+          } else if (_field.returnType === "number") {
+            aliasAttrs[fieldName] = this._getFormattedNumber(
+              Number(attrs[fieldName]), getFormatInfo(fieldName)
+            );
+          } else if (_field.returnType === "string") {
+            aliasAttrs[fieldName] = attrs[fieldName];
+          }
+        }));
+      }
       return aliasAttrs;
     },
 
@@ -1196,7 +1269,7 @@ define([
           break;
         case "SquareMiles":
           analysisResultUnit = (geometryType === "esriGeometryPolygon") ?
-          this.nls.units.milesAbbr + "&sup2" : this.nls.units.milesAbbr;
+            this.nls.units.milesAbbr + "&sup2" : this.nls.units.milesAbbr;
           break;
       }
       return analysisResultUnit;
@@ -1535,7 +1608,7 @@ define([
                   case "Acres":
                   case "SquareMeters":
                   case "SquareKilometers":
-                  case "Hectares"  :
+                  case "Hectares":
                   case "SquareMiles":
                     domClass.add(valuesTd, analysisUnitClass);
                     domClass.add(valuesTd, "esriCTEsriGeometryPolygon");
@@ -1754,6 +1827,162 @@ define([
     _setFocusOnFirstNode: function () {
       this._focusOutCurrentNode();
       focusUtil.focus(this.layerSectionIcon);
+    },
+
+    /**
+     * -----------------------------------
+     * Arcade Exp Code
+     * -----------------------------------
+     * */
+
+    /**
+     * Parses Arcade expression infos.
+     * @param {array} expressionInfos Expression info list from popupInfo
+     * @return {object} List of parsed expressions keyed by the expression name
+     */
+    parseArcadeExpressions: function (expressionInfos) {
+      var parsedExpressions;
+      if (Array.isArray(expressionInfos) && expressionInfos.length > 0) {
+        parsedExpressions = {};
+        array.forEach(expressionInfos, function (info) {
+          parsedExpressions[info.name] = Arcade.parseScript(info.expression);
+        });
+      }
+      return parsedExpressions;
+    },
+
+    /**
+     * Initializes the Arcade context with an ArcadeFeature.
+     * @param {object} feature Feature to convert into an ArcadeFeature and to add to the context's vars object
+     * @return {object} Arcade context object
+     */
+    initArcadeContext: function (feature, layer, expressionInfos) {
+      var map = null, sr = null;
+      if (this.map) {
+        map = this.map;
+      }
+      if (layer && layer.layerObject) {
+        layer = layer.layerObject;
+      }
+      if (feature && feature.geometry && feature.geometry.spatialReference) {
+        sr = feature.geometry.spatialReference;
+      }
+
+      var context = this.getEvalOptions({
+        expression: expressionInfos,
+        feature: feature,
+        layer: layer,
+        map: map,
+        sr: sr,
+      }).context;
+      return context;
+    },
+
+    /**
+       * Returns an object containing the context needed for evaluating an expression
+       * and other options.
+       * @param {Object} parameters
+       * @param {ArcadeExpression} parameters.expression
+       * @param {Graphic} parameters.feature
+       * @param {FeatureLayer} parameters.layer
+       * @param {Map} parameters.map
+       * @param {SpatialReference} parameters.spatialReference
+       *
+       * @returns {Object}
+       */
+    getEvalOptions: function (parameters) {
+      var feature = parameters.feature;
+      var layer = parameters.layer;
+      var map = parameters.map;
+      var sr = parameters.spatialReference;
+
+      var $feature = (feature)
+        ? ArcadeFeature.createFromGraphicLikeObject(feature.geometry, feature.attributes, layer)
+        : null;
+
+      var $layer, $datastore;
+
+      if (layer) {
+        var options = {
+          spatialReference: sr
+        };
+
+        $layer = layer.getMap()
+          ? expressionUtils.createFeatureSetFromLayer(layer, options)
+          : expressionUtils.createFeatureSetFromLayerUrl(layer.url, options);
+
+        var serviceUrl = utils.getServiceUrl(layer.url);
+
+        $datastore = serviceUrl
+          ? expressionUtils.createFeatureSetCollectionFromServiceUrl(serviceUrl, options)
+          : null;
+      }
+
+      var $map = (map)
+        ? expressionUtils.createFeatureSetCollectionFromMap(map)
+        : null;
+
+      return {
+        context: {
+          vars: {
+            $feature: $feature,
+            $layer: $layer,
+            $datastore: $datastore,
+            $map: $map
+          },
+          spatialReference: sr
+        }
+      };
+    },
+
+    /**
+     * Creates a list of feature attributes and resolved Arcade expressions for the feature.
+     * @param {object} feature Feature whose attributes are to be used
+     * @param {object} parsedExpressions Parsed Arcade expressions keyed by the expression name; each expression
+     *        is resolved and added to the output object keyed by 'expression/' + the expression's name
+     * @return {object} Combination of feature attributes and resolved expressions
+     */
+    combineFeatureAttributesAndExpressionResolutions: function (feature, layer, expressionInfos, parsedExpressions) {
+      var def = new Deferred(), defList = [];
+      var attributesAndExpressionResolutions, arcadeContext, name;
+
+      // Resolve Arcade expressions for this feature; convert to string in case its return type is not already string
+      attributesAndExpressionResolutions = lang.mixin({}, feature.attributes);
+      if (parsedExpressions) {
+        arcadeContext = this.initArcadeContext(feature, layer, expressionInfos, parsedExpressions);
+        for (name in parsedExpressions) {
+          defList.push(this.executeArcadeExpression(name, parsedExpressions[name], arcadeContext, attributesAndExpressionResolutions));
+        }
+        all(defList).then(function () {
+          def.resolve(attributesAndExpressionResolutions);
+        });
+      } else {
+        def.resolve(attributesAndExpressionResolutions);
+      }
+
+      return def.promise;
+    },
+
+    executeArcadeExpression: function (name, parsedExpression, arcadeContext, attributesAndExpressionResolutions) {
+      var resolvedExpression, def = new Deferred();
+      resolvedExpression = Arcade.executeScript(parsedExpression, arcadeContext);
+      //if resolved expression has promise resolve the result after completing the promise,
+      //else resolve the result
+      if (resolvedExpression && resolvedExpression.then) {
+        resolvedExpression.then(function (a) {
+          attributesAndExpressionResolutions['expression/' + name] = a ? a.toString() : '';
+          def.resolve(a);
+        }, function (error) {
+          attributesAndExpressionResolutions['expression/' + name] =
+            error ? error.toString() : '';
+          def.resolve(error);
+        });
+      } else {
+        attributesAndExpressionResolutions['expression/' + name] =
+          resolvedExpression ? resolvedExpression.toString() : '';
+        def.resolve(resolvedExpression);
+      }
+      return def.promise;
     }
   });
 });

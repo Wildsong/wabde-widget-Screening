@@ -437,9 +437,41 @@ define([
             options.formatDate = true;
             options.formatCodedValue = true;
             options.popupInfo = popupInfo;
+            //to show arcade expression values in csv add Arcade Expressions to outFields
+            if (popupInfo && popupInfo.expressionInfos) {
+              options.outFields = this.appendArcadeExpressionsToFields(options.outFields, popupInfo.expressionInfos);
+            }
             this._exportToCSVFile(layer, options, index + 1);
           }
         }));
+    },
+
+    appendArcadeExpressionsToFields: function (outFields, arcadeExpressions) {
+      if (!outFields) {
+        return;
+      }
+      if (arcadeExpressions.length > 0) {
+        var prefix = 'expression/';
+        var re = new RegExp('^' + prefix);
+        array.forEach(arcadeExpressions, function (exp) {
+          // compare expressions with original fields list
+          if (!array.some(outFields, function (outField) {
+            if (re.test(outField.name)) { // field is an arcade expression
+              var outfieldExprName = outField.name.substr(prefix.length);
+              return exp.name === outfieldExprName;
+            }
+          })) {
+            // if the expression does not exist in fields,
+            // add it to fields list:
+            outFields.push({
+              name: prefix + exp.name,
+              alias: exp.title,
+              show: true
+            });
+          }
+        });
+      }
+      return outFields;
     },
 
     /**

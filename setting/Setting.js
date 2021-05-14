@@ -692,7 +692,8 @@ define([
         featureLayer: layerGridInfo.layer.layerObject,
         selectedFields: tr.selectedFields,
         groupbyfieldCheckBoxStatus: tr.groupbyfieldCheckBoxStatus,
-        layerGridInfo: layerGridInfo
+        layerGridInfo: layerGridInfo,
+        layerInfo: this._layerInfosObj.getLayerInfoById(layerGridInfo.layer.layerObject.id)
       };
       this._createFieldSelectorPopup(args, tr);
     },
@@ -1256,7 +1257,7 @@ define([
         } else {
           layerItem.layerId = layerItem.url.substr(layerItem.url.lastIndexOf(
             '/') + 1, layerItem.url
-              .length);
+            .length);
         }
         //create map server URL
         baseURL = layerItem.url.substr(0, layerItem.url.lastIndexOf(
@@ -1528,6 +1529,20 @@ define([
                     selectedFields[field.fieldName] = field;
                   }
                 }));
+
+                //Add all Arcade Expression fields 
+                if (!selectedFields.hasOwnProperty(field.fieldName) &&
+                  popupInfo && popupInfo.expressionInfos) {
+                  var expInfos = popupInfo.expressionInfos;
+                  array.forEach(expInfos, lang.hitch(this, function (fieldInfo) {
+                    var expField = lang.clone(fieldInfo);
+                    expField.name = "expression/" + expField.name;
+                    if (field.fieldName === expField.name) {
+                      selectedFields[field.fieldName] = expField;
+                      selectedFields[field.fieldName].alias = expField.title + " {" + expField.name + "}";
+                    }
+                  }));
+                }
               }
             }
           }));

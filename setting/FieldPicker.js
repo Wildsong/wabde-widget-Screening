@@ -116,7 +116,7 @@ define([
      * @memberOf Screening/setting/FieldPicker
      */
     _addValidFields: function () {
-      var validFieldTypes;
+      var validFieldTypes, validExprReturnTypes, popupInfo;
       validFieldTypes = [
         'esriFieldTypeInteger',
         'esriFieldTypeSingle',
@@ -125,6 +125,14 @@ define([
         'esriFieldTypeString',
         'esriFieldTypeDate'
       ];
+
+      validExprReturnTypes = [
+        'string',
+        'number',
+        'date'
+      ];
+
+      //Add all fields from the layer
       array.forEach(this.featureLayer.fields, lang.hitch(this, function (field) {
         this._entireFieldObj[field.name] = field;
         if (validFieldTypes.indexOf(field.type) > -1) {
@@ -137,6 +145,30 @@ define([
           }
         }
       }));
+      //if originOperLayer not having popupinfo try to fetch using layerInfos getPopupInfo method
+      if (this.layerInfo && this.layerInfo.originOperLayer && this.layerInfo.originOperLayer.popupInfo) {
+        popupInfo = this.layerInfo.originOperLayer.popupInfo;
+      } else if (this.layerInfo && this.layerInfo.getPopupInfo && this.layerInfo.getPopupInfo()) {
+        popupInfo = this.layerInfo.getPopupInfo();
+      }
+      //Add all Arcade Expression fields 
+      if (popupInfo && popupInfo.expressionInfos) {
+        var expInfos = popupInfo.expressionInfos;
+        array.forEach(expInfos, lang.hitch(this, function (fieldInfo) {
+          var field = lang.clone(fieldInfo);
+          field.name = "expression/" + field.name;
+          this._entireFieldObj[field.name] = field;
+          if (validExprReturnTypes.indexOf(field.returnType) > -1) {
+            this._entireFieldsArr.push(field.name);
+            this._entireFieldObj[field.name].alias = field.title + " {" + field.name + "}";
+            if (this.selectedFields &&
+              this.selectedFields[field.name]) {
+              this._entireFieldObj[field.name].label =
+                this.selectedFields[field.name].label;
+            }
+          }
+        }));
+      }
       if (this._entireFieldsArr.length === 0) {
         this._disableAddFieldButton();
       }
