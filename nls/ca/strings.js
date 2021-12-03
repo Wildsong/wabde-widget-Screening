@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detall de les entitats que s'intersequen",
     "valueAriaLabel": "Valor",
     "countAriaLabel": "Recompte",
-    "layerNameWithFeatureCount": "Capa ${layerName} amb ${featureCount} entitats que s'intersequen"
+    "layerNameWithFeatureCount": "Capa ${layerName} amb ${featureCount} entitats que s'intersequen",
+    "sortingSettingsLegend": "Configuració d'ordenació",
+    "ascendingLabel": "Ascendent",
+    "descendingLabel": "Descendent",
+    "sortFieldSelectLabel": "Seleccioneu el camp d'ordenació",
+    "errorLabel": "El servidor ha detectat un error temporal i no ha pogut completar la consulta.",
+    "statisticsCountLabel": "Estadístiques: recompte",
+    "statisticsTotalLengthLabel": "Estadístiques: longitud total",
+    "statisticsTotalAreaLabel": "Estadístiques: àrea total",
+    "timedOutErrorLabel": "S'ha esgotat el temps d'espera del servidor",
+    "sortHint": "Suggeriment: els camps seleccionats només s'ordenen quan el nombre d'entitats o de grups és superior a 1."
   }
 });

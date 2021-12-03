@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "交差するフィーチャの詳細",
     "valueAriaLabel": "値",
     "countAriaLabel": "数",
-    "layerNameWithFeatureCount": "交差するフィーチャが ${featureCount} 個ある ${layerName} レイヤー"
+    "layerNameWithFeatureCount": "交差するフィーチャが ${featureCount} 個ある ${layerName} レイヤー",
+    "sortingSettingsLegend": "並べ替え設定",
+    "ascendingLabel": "昇順",
+    "descendingLabel": "降順",
+    "sortFieldSelectLabel": "並べ替えフィールドを選択",
+    "errorLabel": "サーバーで一時的なエラーが発生したため、クエリを完了できませんでした。",
+    "statisticsCountLabel": "統計: カウント",
+    "statisticsTotalLengthLabel": "統計: 全長",
+    "statisticsTotalAreaLabel": "統計: 合計面積",
+    "timedOutErrorLabel": "サーバーがタイムアウトしました",
+    "sortHint": "ヒント: フィーチャ/グループの数が複数の場合のみ、選択したフィールドが並べ替えられます。"
   }
 });

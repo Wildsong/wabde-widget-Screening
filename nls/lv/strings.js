@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Pārklājošo elementu dati",
     "valueAriaLabel": "Vērtība",
     "countAriaLabel": "Skaits",
-    "layerNameWithFeatureCount": "${layerName} slānis ar ${featureCount} elementiem, kas pārklājas"
+    "layerNameWithFeatureCount": "${layerName} slānis ar ${featureCount} elementiem, kas pārklājas",
+    "sortingSettingsLegend": "Kārtot iestatījumus",
+    "ascendingLabel": "Augošā secībā",
+    "descendingLabel": "Dilstošā secībā",
+    "sortFieldSelectLabel": "Izvēlēties kārtošanas lauku",
+    "errorLabel": "Serverī radās īslaicīga kļūda, un tas nevarēja izpidīt vaicājumu.",
+    "statisticsCountLabel": "Statistika: skaits",
+    "statisticsTotalLengthLabel": "Statistika: kopējais garums",
+    "statisticsTotalAreaLabel": "Statistika: kopējā laukums",
+    "timedOutErrorLabel": "Iestājies servera taimauts",
+    "sortHint": "Padoms. izvēlētie lauki tiek kārtoti tikai tad, ja elementu/grupu skaits ir lielāks par 1."
   }
 });

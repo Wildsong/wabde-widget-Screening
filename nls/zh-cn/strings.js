@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "相交要素详细信息",
     "valueAriaLabel": "值",
     "countAriaLabel": "计数",
-    "layerNameWithFeatureCount": "${layerName} 图层具有 ${featureCount} 个相交要素"
+    "layerNameWithFeatureCount": "${layerName} 图层具有 ${featureCount} 个相交要素",
+    "sortingSettingsLegend": "排序设置",
+    "ascendingLabel": "升序",
+    "descendingLabel": "降序",
+    "sortFieldSelectLabel": "选择排序字段",
+    "errorLabel": "服务器遇到临时错误，无法完成查询。",
+    "statisticsCountLabel": "统计数据：计数",
+    "statisticsTotalLengthLabel": "统计数据：总长度",
+    "statisticsTotalAreaLabel": "统计数据：总面积",
+    "timedOutErrorLabel": "服务器超时",
+    "sortHint": "提示：仅当要素/群组数量大于 1 时，才会对所选字段进行排序。"
   }
 });

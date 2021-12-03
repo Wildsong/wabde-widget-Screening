@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Elementos de grupo por campo com o mesmo valor",
     "groupingHintDescription": "Sugestão: por predefinição, todos os elementos com o mesmo valor para os campos selecionados serão agrupados para surgirem com uma única entrada no relatório. Desative o agrupamento por atributos semelhantes para ver uma entrada para cada elemento.",
     "addLayersHintText": "Dica: escolha as camadas e campos a incluir na análise e relatório",
+    "queryCapabilityHintText": "Apenas camadas com capacidades de consulta serão listadas",
     "addLayerNameTitle": "Nome da Camada",
     "addFieldsLabel": "Adicionar Campo",
     "addFieldsPopupTitle": "Selecionar Campos",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polígono",
     "drawToolCircleLabel": "Círculo",
     "selectDrawToolsText": "Escolha as ferramentas de desenho disponíveis para criar a área de interesse",
-    "selectingDrawToolErrorMessage": "Escolha pelos menos uma ferramenta de desenho ou camada de seleção para utilizar a opção Ferramentas de Desenho para Ferramentas AOI."
+    "selectingDrawToolErrorMessage": "Escolha pelos menos uma ferramenta de desenho ou camada de seleção para utilizar a opção Ferramentas de Desenho para Ferramentas AOI.",
+    "sortingSettingsLegend": "Ordenar Definições",
+    "ascendingLabel": "Ascendente",
+    "descendingLabel": "Decrescente",
+    "sortFieldSelectLabel": "Selecionar campo de ordenação",
+    "statisticsCountLabel": "Estatísticas: Contagem",
+    "statisticsTotalLengthLabel": "Estatísticas: Comprimento Total",
+    "statisticsTotalAreaLabel": "Estatísticas: Área Total"
   },
   "downloadTab": {
     "downloadLegend": "Definições de Transferência",

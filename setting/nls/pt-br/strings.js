@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Agrupe feições por campo com o mesmo valor",
     "groupingHintDescription": "Dica: Por padrão, todas as feições com o mesmo valor para os campos selecionados serão agrupadas para aparecer como uma única entrada no relatório. Desative o agrupamento por atributos semelhantes para exibir uma entrada para cada feição.",
     "addLayersHintText": "Dica: Escolha as camadas e os campos a serem incluídos na análise e no relatório",
+    "queryCapabilityHintText": "Somente camadas com recursos de consulta serão listadas",
     "addLayerNameTitle": "Nome da Camada",
     "addFieldsLabel": "Adicionar Campo",
     "addFieldsPopupTitle": "Selecionar Campos",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polígono",
     "drawToolCircleLabel": "Círculo",
     "selectDrawToolsText": "Escolha as ferramentas de desenho disponíveis para criar a área de interesse",
-    "selectingDrawToolErrorMessage": "Escolha pelo menos uma ferramenta de desenho ou camada de seleção para utilizar a opção Ferramentas de Desenho para Ferramentas de AOI."
+    "selectingDrawToolErrorMessage": "Escolha pelo menos uma ferramenta de desenho ou camada de seleção para utilizar a opção Ferramentas de Desenho para Ferramentas de AOI.",
+    "sortingSettingsLegend": "Configurações de Classificar",
+    "ascendingLabel": "Crescente",
+    "descendingLabel": "Descendente",
+    "sortFieldSelectLabel": "Selecionar campo de classificação",
+    "statisticsCountLabel": "Estatística: Contagem",
+    "statisticsTotalLengthLabel": "Estatística: Comprimento Total",
+    "statisticsTotalAreaLabel": "Estatística: Área Total"
   },
   "downloadTab": {
     "downloadLegend": "Configurações de Download",
@@ -96,7 +104,7 @@ define({
     "setGPTaskTitle": "Especifique a URL de Serviço de Geoprocessamento exigida",
     "logoLabel": "Logotipo",
     "logoChooserHint": "Dica: Clique no ícone da imagem para alterar o logotipo mostrado no canto superior esquerdo do relatório",
-    "footnoteLabel": "Nota de rodapÃ©",
+    "footnoteLabel": "Nota de rodapé",
     "columnTitleColorPickerLabel": "Cor do título da coluna do relatório",
     "reportTitleLabel": "Título do relatório",
     "displaySummaryLabel": "Exibir Resumo",

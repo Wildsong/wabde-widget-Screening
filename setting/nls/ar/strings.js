@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "معالم المجموعة حسب الحقل بنفس القيمة",
     "groupingHintDescription": "تلميح: افتراضيًا، سيتم تجميع كل المعالم ذات نفس القيمة للحقول المحددة لتظهر كإدخال فردي في التقرير. عطّل التجميع حسب السمات لتعرض إدخالاً لكل معلم بدلاً من ذلك.",
     "addLayersHintText": "تلميح: اختر الطبقات والحقول لتضمينها في التحليل والتقرير",
+    "queryCapabilityHintText": "سيتم إدراج الطبقات ذات إمكانات الاستعلام فقط",
     "addLayerNameTitle": "اسم الطبقة",
     "addFieldsLabel": "إضافة حقل",
     "addFieldsPopupTitle": "تحديد حقول",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "مضلع",
     "drawToolCircleLabel": "دائرة",
     "selectDrawToolsText": "اختيار أدوات الرسم المتاحة لإنشاء منطقة الاهتمام",
-    "selectingDrawToolErrorMessage": "اختر أداة رسم أو طبقة تحديد واحدة على الأقل لاستخدام خيار أدوات الرسم لأدوات AOI."
+    "selectingDrawToolErrorMessage": "اختر أداة رسم أو طبقة تحديد واحدة على الأقل لاستخدام خيار أدوات الرسم لأدوات AOI.",
+    "sortingSettingsLegend": "إعدادات الفرز",
+    "ascendingLabel": "تصاعدي",
+    "descendingLabel": "تنازليًا",
+    "sortFieldSelectLabel": "تحديد حقل الفرز",
+    "statisticsCountLabel": "الإحصائيات: العدد",
+    "statisticsTotalLengthLabel": "الإحصائيات: إجمالي الطول",
+    "statisticsTotalAreaLabel": "الإحصائيات: إجمالي المساحة"
   },
   "downloadTab": {
     "downloadLegend": "إعدادات التنزيل",

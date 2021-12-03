@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Le feature raggruppate per campo con lo stesso valore",
     "groupingHintDescription": "Suggerimento: per impostazione predefinita tutte le feature con lo stesso valore per i campi selezionati verranno raggruppate per apparire come un unico elemento nel report. Disabilitare il raggruppamento per attributi simili per visualizzare un elemento per ogni feature.",
     "addLayersHintText": "Suggerimento: scegliere i layer e i campi da includere nell'analisi e nel report",
+    "queryCapabilityHintText": "Solo i layer con funzionalità di interrogazione verranno elencati",
     "addLayerNameTitle": "Nome layer",
     "addFieldsLabel": "Aggiungi campo",
     "addFieldsPopupTitle": "Seleziona campi",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligonale",
     "drawToolCircleLabel": "Cerchio",
     "selectDrawToolsText": "Scegliere gli strumenti di disegno disponibili per creare l'area di interesse",
-    "selectingDrawToolErrorMessage": "Scegliere almeno uno strumento di disegno o layer di selezione per utilizzare l’opzione  Strumenti di disegno per Strumenti AOI."
+    "selectingDrawToolErrorMessage": "Scegliere almeno uno strumento di disegno o layer di selezione per utilizzare l’opzione  Strumenti di disegno per Strumenti AOI.",
+    "sortingSettingsLegend": "Impostazioni di ordinamento",
+    "ascendingLabel": "Crescente",
+    "descendingLabel": "Decrescente",
+    "sortFieldSelectLabel": "Seleziona il campo di ordinamento",
+    "statisticsCountLabel": "Statistiche: Conteggio",
+    "statisticsTotalLengthLabel": "Statistiche: Lunghezza totale",
+    "statisticsTotalAreaLabel": "Statistiche: Area totale"
   },
   "downloadTab": {
     "downloadLegend": "Impostazioni di download",

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Združi geoobjekte po poljih z enako vrednostjo",
     "groupingHintDescription": "Namig: po privzeti nastavitvi bodo vsi geoobjekti z enako vrednostjo za izbrana polja združeni, da se v poročilu pojavijo kot en vnos. Onemogočite združevanje po podobnih atributih, da prikažete vnos za vsak geoobjekt.",
     "addLayersHintText": "Namig: izberite sloje in polja, ki bodo vključeni v analizo in poročilo.",
+    "queryCapabilityHintText": "Na seznamu bodo samo sloji z zmožnostjo poizvedbe",
     "addLayerNameTitle": "Ime sloja",
     "addFieldsLabel": "Dodaj polje",
     "addFieldsPopupTitle": "Izberi polja",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligon",
     "drawToolCircleLabel": "Krog",
     "selectDrawToolsText": "Izberite orodja za risanje, ki so na voljo za ustvarjanje interesnega območja.",
-    "selectingDrawToolErrorMessage": "Izberite vsaj eno orodje za risanje ali izbirni sloj za uporabo možnosti Orodja za risanje za orodja interesnega območja."
+    "selectingDrawToolErrorMessage": "Izberite vsaj eno orodje za risanje ali izbirni sloj za uporabo možnosti Orodja za risanje za orodja interesnega območja.",
+    "sortingSettingsLegend": "Nastavitve razvrščanja",
+    "ascendingLabel": "Naraščajoče",
+    "descendingLabel": "Padajoče",
+    "sortFieldSelectLabel": "Izberite polje za razvrščanje",
+    "statisticsCountLabel": "Statistika: število",
+    "statisticsTotalLengthLabel": "Statistika: skupna dolžina",
+    "statisticsTotalAreaLabel": "Statistika: skupna površina"
   },
   "downloadTab": {
     "downloadLegend": "Prenesi nastavitve",

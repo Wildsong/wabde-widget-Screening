@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Regrouper les entités par champ de même valeur",
     "groupingHintDescription": "Astuce : par défaut, toutes les entités présentant une valeur identique pour les champs sélectionnés sont regroupées dans une même entrée du rapport. Désactivez le regroupement par attributs similaires pour afficher une entrée pour chaque entité.",
     "addLayersHintText": "Astuce : choisissez les couches et champs à inclure dans l’analyse et le rapport",
+    "queryCapabilityHintText": "Seules les couches avec des capacités de requête seront répertoriées",
     "addLayerNameTitle": "Nom de la couche",
     "addFieldsLabel": "Ajouter un champ",
     "addFieldsPopupTitle": "Sélectionner des champs",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygone",
     "drawToolCircleLabel": "Cercle",
     "selectDrawToolsText": "Choisissez les outils de dessin disponibles pour créer la zone d’intérêt",
-    "selectingDrawToolErrorMessage": "Choisissez au moins un outil de dessin ou une couche de sélection afin d’utiliser l’option Outils de dessin pour Outils AOI."
+    "selectingDrawToolErrorMessage": "Choisissez au moins un outil de dessin ou une couche de sélection afin d’utiliser l’option Outils de dessin pour Outils AOI.",
+    "sortingSettingsLegend": "Paramètres de tri",
+    "ascendingLabel": "Croissant",
+    "descendingLabel": "Décroissant",
+    "sortFieldSelectLabel": "Sélectionner un champ de tri",
+    "statisticsCountLabel": "Statistiques : total",
+    "statisticsTotalLengthLabel": "Statistiques : longueur totale",
+    "statisticsTotalAreaLabel": "Statistiques : surface totale"
   },
   "downloadTab": {
     "downloadLegend": "Paramètres de téléchargement",

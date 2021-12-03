@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Seskupte prvky podle polí se stejnou hodnotou.",
     "groupingHintDescription": "Nápověda: Ve výchozím nastavení jsou všechny prvky se stejnou hodnotou ve vybraných polích seskupeny, aby ve zprávě vypadaly jednotně. Deaktivováním seskupování zobrazíte hodnoty každého prvku zvlášť.",
     "addLayersHintText": "Nápověda: Vyberte vrstvy a pole, která mají být zahrnuta v analýze a zprávě",
+    "queryCapabilityHintText": "V seznamu budou uvedeny pouze vrstvy s možností dotazování",
     "addLayerNameTitle": "Jméno vrstvy",
     "addFieldsLabel": "Přidat pole",
     "addFieldsPopupTitle": "Vybrat pole",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygon",
     "drawToolCircleLabel": "Kruh",
     "selectDrawToolsText": "Zvolte nástroje kreslení dostupné pro vytvoření zájmové oblasti",
-    "selectingDrawToolErrorMessage": "Zvolte alespoň jeden nástroj kreslení nebo vrstvu výběru pro použití možnosti Nástrojů kreslení pro Nástroje zájmové oblasti."
+    "selectingDrawToolErrorMessage": "Zvolte alespoň jeden nástroj kreslení nebo vrstvu výběru pro použití možnosti Nástrojů kreslení pro Nástroje zájmové oblasti.",
+    "sortingSettingsLegend": "Nastavení třídění",
+    "ascendingLabel": "Vzestupně",
+    "descendingLabel": "Sestupně",
+    "sortFieldSelectLabel": "Vybrat pole třídění",
+    "statisticsCountLabel": "Statistiky: počet",
+    "statisticsTotalLengthLabel": "Statistiky: celková délka",
+    "statisticsTotalAreaLabel": "Statistiky: celková plocha"
   },
   "downloadTab": {
     "downloadLegend": "Nastavení stahování",

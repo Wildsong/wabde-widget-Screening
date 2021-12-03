@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detalj geoobjekta koji se preseca",
     "valueAriaLabel": "Vrednost",
     "countAriaLabel": "Brojač",
-    "layerNameWithFeatureCount": "${layerName} sloj sa ${featureCount} ispresecanim komponentama"
+    "layerNameWithFeatureCount": "${layerName} sloj sa ${featureCount} ispresecanim komponentama",
+    "sortingSettingsLegend": "Podešavanja sortiranja",
+    "ascendingLabel": "Rastuće",
+    "descendingLabel": "Opadajuće",
+    "sortFieldSelectLabel": "Izaberi polje za sortiranje",
+    "errorLabel": "Server je otkrio privremenu grešku i nije mogao da dovrši upit.",
+    "statisticsCountLabel": "Statistika: broj",
+    "statisticsTotalLengthLabel": "Statistika: ukupna dužina",
+    "statisticsTotalAreaLabel": "Statistika: ukupna površina",
+    "timedOutErrorLabel": "Isteklo je vreme servera",
+    "sortHint": "Podsetnik: odabrana polja se sortiraju samo kada je broj geoobjekata/grupa manji od 1."
   }
 });

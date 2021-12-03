@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupper objekter efter felt med samme værdi",
     "groupingHintDescription": "Tip: Som standard grupperes alle objekter med samme værdi for de markerede felter, så de fremstår som en enkelt post i rapporten. Deaktiver gruppering efter de samme attributer for at vise en post for hvert objekt i stedet.",
     "addLayersHintText": "Tip: Vælg de lag og felter, der skal medtages i analysen og rapporten",
+    "queryCapabilityHintText": "Kun lag med forespørgselsfunktioner vil blive angivet",
     "addLayerNameTitle": "Navn på lag",
     "addFieldsLabel": "Tilføj felt",
     "addFieldsPopupTitle": "Vælg felter",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygon",
     "drawToolCircleLabel": "Cirkel",
     "selectDrawToolsText": "Vælg de tegneværktøjer, der er tilgængelige for oprettelse af interesseområdet",
-    "selectingDrawToolErrorMessage": "Vælg mindst ét tegneværktøj eller valglag for at anvende Tegneværktøjer til AOI-værktøjer."
+    "selectingDrawToolErrorMessage": "Vælg mindst ét tegneværktøj eller valglag for at anvende Tegneværktøjer til AOI-værktøjer.",
+    "sortingSettingsLegend": "Sorteringsindstillinger",
+    "ascendingLabel": "Stigende",
+    "descendingLabel": "Faldende",
+    "sortFieldSelectLabel": "Vælg sorteringsfelt",
+    "statisticsCountLabel": "Statistik: antal",
+    "statisticsTotalLengthLabel": "Statistik: samlet længde",
+    "statisticsTotalAreaLabel": "Statistik: samlet område"
   },
   "downloadTab": {
     "downloadLegend": "Download-indstillinger",

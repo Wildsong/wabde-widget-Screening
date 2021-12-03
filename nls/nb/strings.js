@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Kryssede geoobjektdetaljer",
     "valueAriaLabel": "Verdi",
     "countAriaLabel": "Antall",
-    "layerNameWithFeatureCount": "${layerName} lag med ${featureCount} kryssende geoobjekter"
+    "layerNameWithFeatureCount": "${layerName} lag med ${featureCount} kryssende geoobjekter",
+    "sortingSettingsLegend": "Sorteringsinnstillinger",
+    "ascendingLabel": "Stigende",
+    "descendingLabel": "Synkende",
+    "sortFieldSelectLabel": "Velg sorteringsfelt",
+    "errorLabel": "Serveren ble rammet av en midlertidig feil og kunne ikke fullføre spørringen.",
+    "statisticsCountLabel": "Statistikk: Antall",
+    "statisticsTotalLengthLabel": "Statistikk: Total lengde",
+    "statisticsTotalAreaLabel": "Statistikk: Totalt areal",
+    "timedOutErrorLabel": "Serveren fikk tidsavbrudd",
+    "sortHint": "Tips: Valgte felt sorteres bare når antallet geoobjekter/grupper er større enn 1."
   }
 });

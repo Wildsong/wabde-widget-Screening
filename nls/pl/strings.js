@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Szczegóły przeciętego obiektu",
     "valueAriaLabel": "Wartość",
     "countAriaLabel": "Liczba",
-    "layerNameWithFeatureCount": "Warstwa ${layerName} z następującą liczbą przecinających się obiektów: ${featureCount}"
+    "layerNameWithFeatureCount": "Warstwa ${layerName} z następującą liczbą przecinających się obiektów: ${featureCount}",
+    "sortingSettingsLegend": "Ustawienia sortowania",
+    "ascendingLabel": "Rosnąco",
+    "descendingLabel": "Malejąco",
+    "sortFieldSelectLabel": "Wybierz pole sortowania",
+    "errorLabel": "Serwer napotkał tymczasowy błąd i nie mógł wykonać zapytania.",
+    "statisticsCountLabel": "Statystyka: Liczba",
+    "statisticsTotalLengthLabel": "Statystyka: Długość całkowita",
+    "statisticsTotalAreaLabel": "Statystyka: Powierzchnia całkowita",
+    "timedOutErrorLabel": "Przekroczono limit czasu serwera",
+    "sortHint": "Wskazówka: Wybrane pola są sortowane tylko wtedy, gdy liczba obiektów/grup jest większa niż 1."
   }
 });

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "값이 동일한 필드를 기준으로 피처 그룹화",
     "groupingHintDescription": "힌트: 기본 설정에 따라 선택한 필드에 대해 값이 동일한 모든 피처가 그룹화되어 보고서에 단일 항목으로 나타납니다. 동일 속성별 그룹화를 비활성화하면 각 피처에 대한 항목이 대신 표시됩니다.",
     "addLayersHintText": "힌트: 분석과 보고서에 포함시킬 레이어와 필드를 선택합니다.",
+    "queryCapabilityHintText": "쿼리 기능이 있는 레이어만 나열됩니다.",
     "addLayerNameTitle": "레이어 이름",
     "addFieldsLabel": "필드 추가",
     "addFieldsPopupTitle": "필드 선택",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "폴리곤",
     "drawToolCircleLabel": "원",
     "selectDrawToolsText": "관심 영역을 생성하는 데 사용될 그리기 도구를 선택합니다.",
-    "selectingDrawToolErrorMessage": "AOI 도구에 대해 그리기 도구 옵션을 사용하려면 그리기 도구 또는 선택 레이어를 하나 이상 선택하세요."
+    "selectingDrawToolErrorMessage": "AOI 도구에 대해 그리기 도구 옵션을 사용하려면 그리기 도구 또는 선택 레이어를 하나 이상 선택하세요.",
+    "sortingSettingsLegend": "정렬 설정",
+    "ascendingLabel": "오름차순",
+    "descendingLabel": "내림차순",
+    "sortFieldSelectLabel": "정렬 필드 선택",
+    "statisticsCountLabel": "통계: 개수",
+    "statisticsTotalLengthLabel": "통계: 총 길이",
+    "statisticsTotalAreaLabel": "통계: 총 면적"
   },
   "downloadTab": {
     "downloadLegend": "다운로드 설정",

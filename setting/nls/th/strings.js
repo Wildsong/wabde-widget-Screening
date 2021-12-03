@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "จัดกลุ่มฟีเจอร์ตามฟิลด์ที่มีค่าเหมือนกัน",
     "groupingHintDescription": "เคล็ดลับ: ตามค่าเริ่มต้น ฟีเจอร์ทั้งหมดที่มีค่าเหมือนกับฟิลด์ที่เลือกจะถูกจัดกลุ่มให้แสดงผลเป็นรายการเดียวในรายการ ปิดใช้งานการจัดกลุ่มตามแอตทริบิวต์ที่เหมือนกัน เพื่อแสดงผลรายการของแต่ละฟีเจอร์แทน",
     "addLayersHintText": "เคล็ดลับ: เลือกชั้นข้อมูลและฟิลด์เพื่อเพิ่มลงในการวิเคราะห์และรายงาน",
+    "queryCapabilityHintText": "จะแสดงรายการเฉพาะชั้นข้อมูลที่มีความสามารถในการคิวรีเท่านั้น",
     "addLayerNameTitle": "ชื่อชั้นข้อมูล",
     "addFieldsLabel": "เพิ่มฟิลด์",
     "addFieldsPopupTitle": "เลือกฟิลด์",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "พื้นที่",
     "drawToolCircleLabel": "วงกลม",
     "selectDrawToolsText": "เลือกเครื่องมือการวาดที่พร้อมใช้งานสำหรับการสร้างพื้นที่ที่สนใจ",
-    "selectingDrawToolErrorMessage": "เลือกเครื่องมือการวาดอย่างน้อยหนึ่งอย่าง หรือชั้นข้อมูลการเลือกที่จะใช้ตัวเลือกเครื่องมือการวาดสำหรับเครื่องมือ AOI"
+    "selectingDrawToolErrorMessage": "เลือกเครื่องมือการวาดอย่างน้อยหนึ่งอย่าง หรือชั้นข้อมูลการเลือกที่จะใช้ตัวเลือกเครื่องมือการวาดสำหรับเครื่องมือ AOI",
+    "sortingSettingsLegend": "การตั้งค่าการเรียงลำดับ",
+    "ascendingLabel": "เรียงจากน้อยไปมาก",
+    "descendingLabel": "เรียงจากมากไปน้อย",
+    "sortFieldSelectLabel": "เลือกฟิลด์การเรียง",
+    "statisticsCountLabel": "สถิติ: นับ",
+    "statisticsTotalLengthLabel": "สถิติ: ระยะทั้งหมด",
+    "statisticsTotalAreaLabel": "สถิติ: พื้นที่รวม"
   },
   "downloadTab": {
     "downloadLegend": "ดาวน์โหลดการตั้งค่า",

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Podrobnosti pretnutého prvku",
     "valueAriaLabel": "Hodnota",
     "countAriaLabel": "Počet",
-    "layerNameWithFeatureCount": "${layerName} vrstva s ${featureCount} pretínajúcimi sa prvkami"
+    "layerNameWithFeatureCount": "${layerName} vrstva s ${featureCount} pretínajúcimi sa prvkami",
+    "sortingSettingsLegend": "Nastavenia triedenia",
+    "ascendingLabel": "Vzostupne",
+    "descendingLabel": "Zostupne",
+    "sortFieldSelectLabel": "Vyberte pole triedenia",
+    "errorLabel": "Server narazil na dočasnú chybu a nemohol dokončiť dopyt.",
+    "statisticsCountLabel": "Štatistika: Počet",
+    "statisticsTotalLengthLabel": "Štatistika: Celková dĺžka",
+    "statisticsTotalAreaLabel": "Štatistika: Celková plocha",
+    "timedOutErrorLabel": "Časový limit servera vypršal",
+    "sortHint": "Nápoveda: Vybrané polia sú triedené iba keď je počet prvkov/skupín väčší ako 1."
   }
 });

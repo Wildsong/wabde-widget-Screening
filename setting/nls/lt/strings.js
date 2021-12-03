@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupuoti elementus pagal lauką su ta pačia reikšme",
     "groupingHintDescription": "Patarimas: pagal numatytuosius nustatymus visi elementai su ta pačią pasirinktų laukų reikšme bus sugrupuoti, kad būtų rodomi kaip vienas ataskaitos įrašas. Išjunkite grupavimą pagal panašius atributus, kad būtų rodomas kiekvieno elemento įrašas.",
     "addLayersHintText": "Pastaba: pasirinkite sluoksnius ir laukus, kurie turėtų būti įtraukti į analizę ir ataskaitą",
+    "queryCapabilityHintText": "Bus pateikti tik sluoksniai su užklausų galimybėmis",
     "addLayerNameTitle": "Sluoksnio pavadinimas",
     "addFieldsLabel": "Pridėti lauką",
     "addFieldsPopupTitle": "Pasirinkite laukus",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligonas",
     "drawToolCircleLabel": "Apskritimas",
     "selectDrawToolsText": "Pasirinkite braižymo įrankius, kuriais galima kurti dominančią teritoriją",
-    "selectingDrawToolErrorMessage": "Pasirinkite bent vieną braižymo įrankį arba pasirinkimo sluoksnį, kad galėtumėte naudoti braižymo įrankių parinktį AOI įrankiai."
+    "selectingDrawToolErrorMessage": "Pasirinkite bent vieną braižymo įrankį arba pasirinkimo sluoksnį, kad galėtumėte naudoti braižymo įrankių parinktį AOI įrankiai.",
+    "sortingSettingsLegend": "Rūšiavimo nustatymai",
+    "ascendingLabel": "Didėjimo tvarka",
+    "descendingLabel": "Mažėjimo tvarka",
+    "sortFieldSelectLabel": "Pasirinkti rūšiavimo lauką",
+    "statisticsCountLabel": "Statistika: skaičius",
+    "statisticsTotalLengthLabel": "Statistika: bendras ilgis",
+    "statisticsTotalAreaLabel": "Statistika: bendras plotas"
   },
   "downloadTab": {
     "downloadLegend": "Atsisiuntimo parametrai",

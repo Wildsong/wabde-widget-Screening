@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "פרטי ישויות מצטלבות",
     "valueAriaLabel": "ערך",
     "countAriaLabel": "מונה",
-    "layerNameWithFeatureCount": "שכבה ${layerName} עם ${featureCount} ישויות מצטלבות"
+    "layerNameWithFeatureCount": "שכבה ${layerName} עם ${featureCount} ישויות מצטלבות",
+    "sortingSettingsLegend": "הגדרות מיון",
+    "ascendingLabel": "עולה",
+    "descendingLabel": "יורד",
+    "sortFieldSelectLabel": "בחר שדה למיון",
+    "errorLabel": "השרת נתקל בשגיאה זמנית ולא הצליח להשלים את השאילתה.",
+    "statisticsCountLabel": "סטטיסטיקה: ספירה",
+    "statisticsTotalLengthLabel": "סטטיסטיקה: אורך כולל",
+    "statisticsTotalAreaLabel": "סטטיסטיקה: שטח כולל",
+    "timedOutErrorLabel": "תם הזמן המוקצב לשרת",
+    "sortHint": "רמז: שדות שנבחרו ממוינים רק כשמספר הישויות/קבוצות גדול מ-1."
   }
 });

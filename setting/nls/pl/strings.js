@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupuj obiekty według pola o tej samej wartości",
     "groupingHintDescription": "Wskazówka: domyślnie wszystkie obiekty o tej samej wartości dla wybranych pól zostaną zgrupowane w taki sposób, aby były wyświetlane jako jeden wpis w raporcie. Wyłącz grupowanie według podobnych atrybutów, aby wyświetlić w zamian wpis dla każdego obiektu.",
     "addLayersHintText": "Wskazówka: Wybiera warstwy i pola, które zostaną uwzględnione w analizie i raporcie",
+    "queryCapabilityHintText": "Na liście zostaną wymienione tylko warstwy z funkcjami zapytań",
     "addLayerNameTitle": "Nazwa warstwy tematycznej",
     "addFieldsLabel": "Dodaj pole",
     "addFieldsPopupTitle": "Wybierz pola",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligon",
     "drawToolCircleLabel": "Okrąg",
     "selectDrawToolsText": "Pozwala wybrać dostępne narzędzia rysowania umożliwiające utworzenie obszaru zainteresowania",
-    "selectingDrawToolErrorMessage": "Wybierz przynajmniej jedno narzędzie rysowania lub warstwę wyboru, aby użyć opcji Narzędzia rysowania w obszarze Narzędzia obszarów zainteresowania."
+    "selectingDrawToolErrorMessage": "Wybierz przynajmniej jedno narzędzie rysowania lub warstwę wyboru, aby użyć opcji Narzędzia rysowania w obszarze Narzędzia obszarów zainteresowania.",
+    "sortingSettingsLegend": "Ustawienia sortowania",
+    "ascendingLabel": "Rosnąco",
+    "descendingLabel": "Malejąco",
+    "sortFieldSelectLabel": "Wybierz pole sortowania",
+    "statisticsCountLabel": "Statystyka: Liczba",
+    "statisticsTotalLengthLabel": "Statystyka: Długość całkowita",
+    "statisticsTotalAreaLabel": "Statystyka: Powierzchnia całkowita"
   },
   "downloadTab": {
     "downloadLegend": "Ustawienia pobierania",

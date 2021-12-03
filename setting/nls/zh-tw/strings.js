@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "按具有相同值的欄位分組圖徵",
     "groupingHintDescription": "提示: 依預設，將分組具有選定欄位之相同值的所有圖徵，將其在報告中顯示為單一項目。 停用按類似屬性分組，改為針對每個圖徵顯示一個項目。",
     "addLayersHintText": "提示: 選擇分析和報告中要包含的圖層和欄位",
+    "queryCapabilityHintText": "只會列出具有查詢功能的圖層",
     "addLayerNameTitle": "圖層名稱",
     "addFieldsLabel": "增加欄位",
     "addFieldsPopupTitle": "選擇欄位",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "面",
     "drawToolCircleLabel": "圓形",
     "selectDrawToolsText": "選擇可用於建立感興趣區域的繪製工具",
-    "selectingDrawToolErrorMessage": "至少選擇一個繪製工具或選擇圖層，以針對 AOI 工具使用繪製工具。"
+    "selectingDrawToolErrorMessage": "至少選擇一個繪製工具或選擇圖層，以針對 AOI 工具使用繪製工具。",
+    "sortingSettingsLegend": "排序設定",
+    "ascendingLabel": "遞增",
+    "descendingLabel": "降冪",
+    "sortFieldSelectLabel": "選擇排序欄位",
+    "statisticsCountLabel": "統計資料: 計數",
+    "statisticsTotalLengthLabel": "統計資料: 總長度",
+    "statisticsTotalAreaLabel": "統計資料: 總面積"
   },
   "downloadTab": {
     "downloadLegend": "下載設定",

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupēt elementus pēc lauka ar vienādu vērtību",
     "groupingHintDescription": "Padoms. Pēc noklusējuma visi elementi ar vienādu vērtību izvēlētajos laukos tiks grupēti, lai tiktu parādīti kā viens ieraksts pārskatā. Atspējojiet grupēšanu pēc vienādiem atribūtiem, lai tā vietā rādītu ierakstu par katru elementu.",
     "addLayersHintText": "Padoms. Izvēlieties slāņus un laukus, ko iekļaut analīzē un pārskatā",
+    "queryCapabilityHintText": "Sarakstā tiks iekļauti tikai slāņi, kuros var veikt vaicājumus",
     "addLayerNameTitle": "Slāņa nosaukums",
     "addFieldsLabel": "Pievienot lauku",
     "addFieldsPopupTitle": "Atlasīt laukus",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Laukums",
     "drawToolCircleLabel": "Aplis",
     "selectDrawToolsText": "Izvēlieties zīmēšanas rīkus, kas pieejami interesējošās teritorijas izveidei",
-    "selectingDrawToolErrorMessage": "Izvēlieties vismaz vienu zīmēšanas rīku vai izvēles slāni, ko lietot ar opciju Zīmēšanas rīki iespējā Interesējošo teritoriju rīki."
+    "selectingDrawToolErrorMessage": "Izvēlieties vismaz vienu zīmēšanas rīku vai izvēles slāni, ko lietot ar opciju Zīmēšanas rīki iespējā Interesējošo teritoriju rīki.",
+    "sortingSettingsLegend": "Kārtot iestatījumus",
+    "ascendingLabel": "Augošā secībā",
+    "descendingLabel": "Dilstošā secībā",
+    "sortFieldSelectLabel": "Izvēlēties kārtošanas lauku",
+    "statisticsCountLabel": "Statistika: skaits",
+    "statisticsTotalLengthLabel": "Statistika: kopējais garums",
+    "statisticsTotalAreaLabel": "Statistika: kopējais laukums"
   },
   "downloadTab": {
     "downloadLegend": "Lejupielādēt iestatījumus",

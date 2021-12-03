@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "相交圖徵詳細資訊",
     "valueAriaLabel": "數值",
     "countAriaLabel": "計數",
-    "layerNameWithFeatureCount": "包含 ${layerName} 個相交圖徵的 ${featureCount} 圖層"
+    "layerNameWithFeatureCount": "包含 ${layerName} 個相交圖徵的 ${featureCount} 圖層",
+    "sortingSettingsLegend": "排序設定",
+    "ascendingLabel": "遞增",
+    "descendingLabel": "降冪",
+    "sortFieldSelectLabel": "選擇排序欄位",
+    "errorLabel": "伺服器發生臨時錯誤且無法完成查詢。",
+    "statisticsCountLabel": "統計資料: 計數",
+    "statisticsTotalLengthLabel": "統計資料: 總長度",
+    "statisticsTotalAreaLabel": "統計資料: 總面積",
+    "timedOutErrorLabel": "伺服器逾時",
+    "sortHint": "提示: 只有當圖徵/群組數量大於 1 時才會排序所選欄位。"
   }
 });

@@ -139,7 +139,7 @@ define({
       hectaresAbbr: "hectares", // hectare unit abbreviation
       squareMilesAbbr: "Square Miles",
       layerNotVisibleText: "Unable to analyze. Layer is turned off or is out of scale visibility range.", // Shown in the report panel when layer is not visible
-      refreshBtnTooltip:"Refresh report",
+      refreshBtnTooltip: "Refresh report",
       featureCSVAreaText: "Intersecting Area", // Shown as text to display area in csv column
       featureCSVLengthText: "Intersecting Length", // Shown as text to display length in csv column
       errorInFetchingPrintTask: "Error while fetching print task information. Please try again.", // shown as error message in fetching print task information
@@ -149,7 +149,17 @@ define({
       intersectedFeatureLabel: "Intersected feature detail",
       valueAriaLabel: "Value",
       countAriaLabel: "Count",
-      layerNameWithFeatureCount: "${layerName} layer with ${featureCount} intersecting features"
+      layerNameWithFeatureCount: "${layerName} layer with ${featureCount} intersecting features",
+      sortingSettingsLegend: "Sort Settings",
+      ascendingLabel: "Ascending",
+      descendingLabel: "Descending",
+      sortFieldSelectLabel: "Select sort field",
+      errorLabel: "The server encountered a temporary error and could not complete the query.",
+      statisticsCountLabel: "Statistics: Count",
+      statisticsTotalLengthLabel: "Statistics: Total Length",
+      statisticsTotalAreaLabel: "Statistics: Total Area",
+      timedOutErrorLabel: "Server timed out",
+      sortHint: "Hint: Selected fields are sorted only when the number of features/groups is more than 1."
     }
   }),
   "ar": 1,

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Группировать объекты по полю с одинаковым значением",
     "groupingHintDescription": "Подсказка: по умолчанию, все объекты с одинаковыми значениями в указанных полях будут сгруппированы и отображены в отчете одной строкой. Отключите группировку по сходным атрибутам, чтобы отобразить строку для каждого объекта.",
     "addLayersHintText": "Подсказка: выберите слои и поля для включения в анализ и отчет",
+    "queryCapabilityHintText": "Будут указаны только слои с возможностью запросов",
     "addLayerNameTitle": "Имя слоя",
     "addFieldsLabel": "Добавить поле",
     "addFieldsPopupTitle": "Выбрать поля",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Полигон",
     "drawToolCircleLabel": "Окружность",
     "selectDrawToolsText": "Выберите инструменты рисования, доступные для создания области интереса",
-    "selectingDrawToolErrorMessage": "Выберите хотя бы один инструмент рисования или слой выборки, чтобы использовать параметр Инструменты рисования для инструментов AOI."
+    "selectingDrawToolErrorMessage": "Выберите хотя бы один инструмент рисования или слой выборки, чтобы использовать параметр Инструменты рисования для инструментов AOI.",
+    "sortingSettingsLegend": "Параметры сортировки",
+    "ascendingLabel": "По возрастанию",
+    "descendingLabel": "По убыванию",
+    "sortFieldSelectLabel": "Выбрать поле сортировки",
+    "statisticsCountLabel": "Статистика: Количество",
+    "statisticsTotalLengthLabel": "Статистика: Общая длина",
+    "statisticsTotalAreaLabel": "Статистика: Общая площадь"
   },
   "downloadTab": {
     "downloadLegend": "Настройки загрузки",

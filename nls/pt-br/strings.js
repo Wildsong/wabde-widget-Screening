@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detalhes de feições interseccionadas",
     "valueAriaLabel": "Valor",
     "countAriaLabel": "Contagem",
-    "layerNameWithFeatureCount": "A ${layerName} camada com ${featureCount} interseccionando feições"
+    "layerNameWithFeatureCount": "A ${layerName} camada com ${featureCount} interseccionando feições",
+    "sortingSettingsLegend": "Configurações de Classificar",
+    "ascendingLabel": "Crescente",
+    "descendingLabel": "Descendente",
+    "sortFieldSelectLabel": "Selecionar campo de classificação",
+    "errorLabel": "O servidor encontrou um erro temporário e não foi possivel concluir a consulta.",
+    "statisticsCountLabel": "Estatística: Contagem",
+    "statisticsTotalLengthLabel": "Estatística: Comprimento Total",
+    "statisticsTotalAreaLabel": "Estatística: Área Total",
+    "timedOutErrorLabel": "O servidor expirou",
+    "sortHint": "Dica: Os campos selecionados são classificados apenas quando o número de feições/grupos é maior que 1."
   }
 });

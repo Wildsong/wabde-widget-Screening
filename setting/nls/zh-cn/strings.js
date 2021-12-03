@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "按字段对具有相同值的要素进行分组",
     "groupingHintDescription": "提示：默认情况下，将对所选字段具有相同值的所有要素进行分组，以在报表中显示为单个条目。 禁用按类似属性进行分组，以显示每个要素的条目。",
     "addLayersHintText": "提示：选择要包含在分析和报告中的图层和字段",
+    "queryCapabilityHintText": "仅会列出具有查询功能的图层。",
     "addLayerNameTitle": "图层名称",
     "addFieldsLabel": "添加字段",
     "addFieldsPopupTitle": "选择字段",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "面",
     "drawToolCircleLabel": "圆形",
     "selectDrawToolsText": "选择可用于创建感兴趣区域的绘图工具",
-    "selectingDrawToolErrorMessage": "选择至少一个绘图工具或选择图层以使用 AOI 工具的“绘制工具”选项。"
+    "selectingDrawToolErrorMessage": "选择至少一个绘图工具或选择图层以使用 AOI 工具的“绘制工具”选项。",
+    "sortingSettingsLegend": "排序设置",
+    "ascendingLabel": "升序",
+    "descendingLabel": "降序",
+    "sortFieldSelectLabel": "选择排序字段",
+    "statisticsCountLabel": "统计数据：计数",
+    "statisticsTotalLengthLabel": "统计数据：总长度",
+    "statisticsTotalAreaLabel": "统计数据：总面积"
   },
   "downloadTab": {
     "downloadLegend": "下载设置",

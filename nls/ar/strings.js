@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "تفاصيل المعلم المتقاطع",
     "valueAriaLabel": "قيمة",
     "countAriaLabel": "العدد",
-    "layerNameWithFeatureCount": "طبقة ${layerName} المحتوية على ${featureCount} معلمًا متقاطعًا"
+    "layerNameWithFeatureCount": "طبقة ${layerName} المحتوية على ${featureCount} معلمًا متقاطعًا",
+    "sortingSettingsLegend": "إعدادات الفرز",
+    "ascendingLabel": "تصاعدي",
+    "descendingLabel": "تنازليًا",
+    "sortFieldSelectLabel": "تحديد حقل الفرز",
+    "errorLabel": "واجه الخادم خطأً مؤقتًا وتعذر عليه إكمال الاستعلام.",
+    "statisticsCountLabel": "الإحصائيات: العدد",
+    "statisticsTotalLengthLabel": "الإحصائيات: إجمالي الطول",
+    "statisticsTotalAreaLabel": "الإحصائيات: إجمالي المساحة",
+    "timedOutErrorLabel": "انتهت مهلة الخادم",
+    "sortHint": "تلميح: تُفرز الحقول المحددة فقط عندما يكون عدد المعالم/المجموعات أكثر من 1."
   }
 });

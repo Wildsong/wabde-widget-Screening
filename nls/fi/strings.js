@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Leikatun kohteen tiedot",
     "valueAriaLabel": "Arvo",
     "countAriaLabel": "Lukumäärä",
-    "layerNameWithFeatureCount": "Karttataso ${layerName}, jossa on ${featureCount} leikkaavaa kohdetta"
+    "layerNameWithFeatureCount": "Karttataso ${layerName}, jossa on ${featureCount} leikkaavaa kohdetta",
+    "sortingSettingsLegend": "Lajitteluasetukset",
+    "ascendingLabel": "Nouseva",
+    "descendingLabel": "Laskeva",
+    "sortFieldSelectLabel": "Valitse lajittelukenttä",
+    "errorLabel": "Palvelimella havaittiin tilapäinen virhe, eikä kyselyä voida suorittaa.",
+    "statisticsCountLabel": "Tilastotiedot: Määrä",
+    "statisticsTotalLengthLabel": "Tilastotiedot: Kokonaispituus",
+    "statisticsTotalAreaLabel": "Tilastotiedot: Kokonaisalue",
+    "timedOutErrorLabel": "Palvelimen aikakatkaisu",
+    "sortHint": "Vihje: valitut kentät lajitellaan vain, jos kohteiden/ryhmien lukumäärä on suurempi kuin 1."
   }
 });

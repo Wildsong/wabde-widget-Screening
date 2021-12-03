@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupare obiecte spațiale după câmpurile cu aceeași valoare",
     "groupingHintDescription": "Sugestie: În mod implicit, toate obiectele spațiale cu aceeași valoare pentru câmpurile selectate vor fi grupate pentru a fi afișate ca o singură intrare în raport. Dezactivați gruparea după atribute similare pentru a afișa o intrare pentru fiecare obiect spațial.",
     "addLayersHintText": "Sugestie: selectați straturile și câmpurile care sunt incluse în analiză și raport",
+    "queryCapabilityHintText": "Vor fi listate doar straturile tematice cu capacități de interogare",
     "addLayerNameTitle": "Nume strat tematic",
     "addFieldsLabel": "Adăugare câmp",
     "addFieldsPopupTitle": "Selectare câmpuri",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligon",
     "drawToolCircleLabel": "Cerc",
     "selectDrawToolsText": "Alegeți instrumentele de trasare disponibile pentru crearea Zonei de interes.",
-    "selectingDrawToolErrorMessage": "Selectați cel puțin un instrument de trasare sau un strat de selectare pentru a utiliza opțiunea Instrument de trasare pentru Instrumente AOI."
+    "selectingDrawToolErrorMessage": "Selectați cel puțin un instrument de trasare sau un strat de selectare pentru a utiliza opțiunea Instrument de trasare pentru Instrumente AOI.",
+    "sortingSettingsLegend": "Sortare setări",
+    "ascendingLabel": "Ascendent",
+    "descendingLabel": "Descendent",
+    "sortFieldSelectLabel": "Selectare câmp de sortare",
+    "statisticsCountLabel": "Statistici: număr",
+    "statisticsTotalLengthLabel": "Statistici: lungime totală",
+    "statisticsTotalAreaLabel": "Statistici: suprafață totală"
   },
   "downloadTab": {
     "downloadLegend": "Setări descărcare",

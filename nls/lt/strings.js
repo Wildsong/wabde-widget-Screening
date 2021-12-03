@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Susikertančio elemento išsami informacija",
     "valueAriaLabel": "Reikšmė",
     "countAriaLabel": "Skaičius",
-    "layerNameWithFeatureCount": "${layerName} sluoksnis su ${featureCount} susikertančių elementų"
+    "layerNameWithFeatureCount": "${layerName} sluoksnis su ${featureCount} susikertančių elementų",
+    "sortingSettingsLegend": "Rūšiavimo nustatymai",
+    "ascendingLabel": "Didėjimo tvarka",
+    "descendingLabel": "Mažėjimo tvarka",
+    "sortFieldSelectLabel": "Pasirinkti rūšiavimo lauką",
+    "errorLabel": "Serveryje įvyko laikina klaida, nepavyko įvykdyti užklausos.",
+    "statisticsCountLabel": "Statistika: skaičius",
+    "statisticsTotalLengthLabel": "Statistika: bendras ilgis",
+    "statisticsTotalAreaLabel": "Statistika: bendras plotas",
+    "timedOutErrorLabel": "Baigėsi skirtasis serverio laikas",
+    "sortHint": "Patarimas: pasirinkti laukai rūšiuojami tik tada, kai elementų ar grupių skaičius didesnis nei 1."
   }
 });

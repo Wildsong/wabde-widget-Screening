@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Détails des entités intersectées",
     "valueAriaLabel": "Valeur",
     "countAriaLabel": "Total",
-    "layerNameWithFeatureCount": "Couche ${layerName} avec ${featureCount} entités d’intersection"
+    "layerNameWithFeatureCount": "Couche ${layerName} avec ${featureCount} entités d’intersection",
+    "sortingSettingsLegend": "Paramètres de tri",
+    "ascendingLabel": "Croissant",
+    "descendingLabel": "Décroissant",
+    "sortFieldSelectLabel": "Sélectionner un champ de tri",
+    "errorLabel": "Le serveur a rencontré une erreur temporaire et n’a pas pu terminer la requête.",
+    "statisticsCountLabel": "Statistiques : total",
+    "statisticsTotalLengthLabel": "Statistiques : longueur totale",
+    "statisticsTotalAreaLabel": "Statistiques : surface totale",
+    "timedOutErrorLabel": "Le délai du serveur a expiré",
+    "sortHint": "Astuce : les champs sélectionnés sont triés uniquement lorsque le nombre d’entités/de groupes est supérieur à 1."
   }
 });

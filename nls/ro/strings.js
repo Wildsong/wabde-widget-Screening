@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detalii obiecte spațiale care se intersectează",
     "valueAriaLabel": "Valoare",
     "countAriaLabel": "Număr",
-    "layerNameWithFeatureCount": "Strat tematic ${layerName} cu ${featureCount} obiecte spațiale care se intersectează"
+    "layerNameWithFeatureCount": "Strat tematic ${layerName} cu ${featureCount} obiecte spațiale care se intersectează",
+    "sortingSettingsLegend": "Sortare setări",
+    "ascendingLabel": "Ascendent",
+    "descendingLabel": "Descendent",
+    "sortFieldSelectLabel": "Selectare câmp de sortare",
+    "errorLabel": "Serverul a întâmpinat o eroare temporară și nu a putut finaliza interogarea.",
+    "statisticsCountLabel": "Statistici: număr",
+    "statisticsTotalLengthLabel": "Statistici: lungime totală",
+    "statisticsTotalAreaLabel": "Statistici: suprafață totală",
+    "timedOutErrorLabel": "Server expirat",
+    "sortHint": "Sugestie: câmpurile selectate sunt sortate numai când numărul de obiecte spațiale/grupuri este mai mare de 1."
   }
 });

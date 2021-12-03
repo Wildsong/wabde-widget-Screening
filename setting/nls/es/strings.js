@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Agrupar entidades por campo con el mismo valor",
     "groupingHintDescription": "Sugerencia: De forma predeterminada, todas las entidades que tienen el mismo valor en los campos seleccionados se agrupan y aparecen como una sola entrada en el informe. Deshabilite la agrupación por atributos similares para mostrar en lugar de ello una entrada para cada entidad en su lugar.",
     "addLayersHintText": "Sugerencia: Seleccione las capas y los campos que desea incluir en el análisis y el informe",
+    "queryCapabilityHintText": "Solo aparecerán las capas con capacidades de consulta",
     "addLayerNameTitle": "Nombre de capa",
     "addFieldsLabel": "Agregar campo",
     "addFieldsPopupTitle": "Selecciona campos",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polígono",
     "drawToolCircleLabel": "Círculo",
     "selectDrawToolsText": "Elegir las herramientas de dibujo disponibles para crear el área de interés",
-    "selectingDrawToolErrorMessage": "Elija al menos una herramienta de dibujo o capa de selección para poder utilizar la opción Herramientas de dibujo en Herramientas AOI."
+    "selectingDrawToolErrorMessage": "Elija al menos una herramienta de dibujo o capa de selección para poder utilizar la opción Herramientas de dibujo en Herramientas AOI.",
+    "sortingSettingsLegend": "Configuración de ordenación",
+    "ascendingLabel": "Ascendente",
+    "descendingLabel": "Descendente",
+    "sortFieldSelectLabel": "Seleccionar campo de ordenación",
+    "statisticsCountLabel": "Estadísticas: Recuento",
+    "statisticsTotalLengthLabel": "Estadísticas: Longitud total",
+    "statisticsTotalAreaLabel": "Estadísticas: Área total"
   },
   "downloadTab": {
     "downloadLegend": "Configuración de descarga",

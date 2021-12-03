@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Dettaglio feature intersecata",
     "valueAriaLabel": "Valore",
     "countAriaLabel": "Conteggio",
-    "layerNameWithFeatureCount": "${layerName} layer con ${featureCount} feature intersecanti"
+    "layerNameWithFeatureCount": "${layerName} layer con ${featureCount} feature intersecanti",
+    "sortingSettingsLegend": "Impostazioni di ordinamento",
+    "ascendingLabel": "Crescente",
+    "descendingLabel": "Decrescente",
+    "sortFieldSelectLabel": "Seleziona il campo di ordinamento",
+    "errorLabel": "Il server ha incontrato un errore temporaneo e non ha potuto completare la query.",
+    "statisticsCountLabel": "Statistiche: Conteggio",
+    "statisticsTotalLengthLabel": "Statistiche: Lunghezza totale",
+    "statisticsTotalAreaLabel": "Statistiche: Area totale",
+    "timedOutErrorLabel": "Il server è scaduto",
+    "sortHint": "Suggerimento: i campi selezionati sono ordinati solo quando il numero di caratteristiche/gruppi è superiore a 1."
   }
 });

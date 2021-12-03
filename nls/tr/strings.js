@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Kesişen detay ayrıntıları",
     "valueAriaLabel": "Değer",
     "countAriaLabel": "Sayım",
-    "layerNameWithFeatureCount": "${featureCount} kesişen detayla ${layerName} katmanı"
+    "layerNameWithFeatureCount": "${featureCount} kesişen detayla ${layerName} katmanı",
+    "sortingSettingsLegend": "Sıralama Ayarları",
+    "ascendingLabel": "Artan",
+    "descendingLabel": "Azalan",
+    "sortFieldSelectLabel": "Sıralama alanını seç",
+    "errorLabel": "Sunucu geçici bir hatayla karşılaştı ve sorguyu tamamlayamadı.",
+    "statisticsCountLabel": "İstatistikler: Sayım",
+    "statisticsTotalLengthLabel": "İstatistikler: Toplam Uzunluk",
+    "statisticsTotalAreaLabel": "İstatistikler: Toplam Alan",
+    "timedOutErrorLabel": "Sunucu süresi doldu",
+    "sortHint": "İpucu: Seçili alanlar yalnızca detay/grup sayısı 1'den fazla olduğunda sıralanır."
   }
 });

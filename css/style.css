@@ -2163,3 +2163,153 @@
 .jimu-widget-screening .esriCTDownloadContainer:focus {
   outline: 2px solid #24B5CC !important;
 }
+
+.jimu-widget-screening .esriCTFieldSet {
+  height: auto;
+  width: 100%;
+  border: 1px solid #a0acbf;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #596679;
+  margin-bottom: 10px;
+  min-width: 0px;
+  padding: 15px 0px;
+}
+
+.jimu-widget-screening .esriCTFieldSetLegend {
+  margin-left: 20px;
+}
+
+.esriRtl .jimu-widget-screening .esriCTFieldSetLegend {
+  margin-right: 20px;
+}
+
+.jimu-widget-screening .esriCTRadioBtnContainer {
+  margin-left: 20px;
+  display: inline-flex
+}
+
+.jimu-rtl .jimu-widget-screening .esriCTRadioBtnContainer {
+  margin-right: 20px;
+}
+
+.jimu-widget-screening .esriCTRadioLabel {
+  vertical-align: top;
+  padding-right: 70px;
+}
+
+.jimu-rtl .jimu-widget-screening .esriCTRadioLabel {
+  padding-right: 0px;
+  padding-left: 70px;
+}
+
+.jimu-widget-screening .esriCTSelectLabel {
+  padding-right: 40px;
+  line-height: 30px;
+}
+
+.jimu-rtl  .jimu-widget-screening .esriCTSelectLabel {
+  padding-left: 40px;
+  padding-right: 0px;
+}
+
+.jimu-widget-screening .esriCTPopupNode {
+  max-height: 450px;
+  margin-right: 5px;
+}
+
+.jimu-rtl  .jimu-widget-screening .esriCTPopupNode {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+
+.jimu-widget-screening .esriCTFieldsNode {
+  margin-left: 15px;
+}
+
+.jimu-rtl  .jimu-widget-screening .esriCTFieldsNode {
+  margin-right: 15px;
+  margin-left: 0px;
+}
+
+.jimu-widget-screening .esriCTFontSize {
+  font-size: 8px !important;
+  color: #596679;
+ }
+
+ @media (max-width: 320px) {
+  .jimu-widget-screening .esriCTPopupNode {
+    max-height: 300px;
+  }
+
+  .jimu-widget-screening .esriCTSortFieldSelect {
+    width: 50px;
+  }
+
+  .jimu-widget-screening .esriCTSortFieldSelect .dijitSelectLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 40px;
+    text-align: left;
+    padding-top: 5px;
+  }
+
+  .jimu-popup .content-static {
+    margin: 15px 14px 0;
+  }
+
+  .jimu-popup .button-container {
+    padding: 10px 15px;
+  }
+ }
+
+@media (max-width: 600px) {
+  .jimu-widget-screening .esriCTRadioBtnContainer {
+     display: block;
+  }
+
+  .jimu-widget-screening .esriCTRadioBtn {
+    padding-bottom: 5px;
+  }
+
+  .jimu-widget-screening .esriCTSortFieldSelect .dijitSelectLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 115px;
+    text-align: left;
+    padding-top: 5px;
+  }
+
+  .jimu-rtl .jimu-widget-screening .esriCTSortFieldSelect .dijitSelectLabel {
+    text-align: right;
+  }
+
+  .jimu-widget-screening .esriCTSortFieldSelect {
+    width: 170px;
+  }
+}
+
+.jimu-widget-screening .esriCTHint {
+  float: left;
+  font-size: 13px;
+  color: rgb(160, 172, 191);
+  font-style: oblique;
+  line-height: 20px;
+  padding-left: 15px;
+  padding-top: 10px;
+  margin-left: 5px;
+}
+
+.jimu-rtl .jimu-widget-screening .esriCTHint {
+  float: right;
+  margin-right: 5px;
+  padding-right: 15px;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.DartTheme .jimu-widget-screening .esriCTFieldSet {
+  color: #ffffff !important;
+}

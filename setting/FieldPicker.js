@@ -29,7 +29,8 @@ define([
   'dojo/query',
   'dojo/dom-class',
   'jimu/utils',
-  'jimu/dijit/CheckBox'
+  'jimu/dijit/CheckBox',
+  'jimu/dijit/RadioBtn'
 ], function (
   declare,
   _WidgetsInTemplateMixin,
@@ -57,6 +58,7 @@ define([
     _entireFieldObj: {}, // to store the object all fields with label
     _configuredField: null, // to store the name of configured field
     _configuredLabel: null, // to store the label of configured field
+    selectedSortingField: null,
 
     constructor: function (options) {
       this._fieldsTable = null;
@@ -65,6 +67,7 @@ define([
       this._entireFieldObj = {};
       this._configuredField = null;
       this._configuredLabel = null;
+      this.selectedSortingField = null;
       lang.mixin(this, options);
     },
 
@@ -74,8 +77,12 @@ define([
     },
 
     postCreate: function () {
+      this.selectedSortingField = null;
       this.inherited(arguments);
       this._init();
+      this.own(on(this.fieldsDropdown, "change", lang.hitch(this, function (value) {
+        this.selectedSortingField = value;
+      })));
     },
 
     _init: function () {
@@ -85,6 +92,19 @@ define([
       this._attachEventsToElement();
       this._displayPreviousConfiguredFields();
       this._setPreviousGroupByFieldCheckboxStatus();
+      if (this.currentRow.sortInfo && this.currentRow.sortInfo.sortOrder === "Desc") {
+        this.descRadioBtn.set("checked", true);
+      } else {
+        this.ascRadioBtn.set("checked", true);
+      }
+      this._onFieldsSelectionChange();
+      if (this.currentRow.sortInfo && this.currentRow.sortInfo.sortingField !== "") {
+        this.fieldsDropdown.set("value", this.currentRow.sortInfo.sortingField);
+      } else {
+        //set default
+        this.fieldsDropdown.set("value",
+          this.fieldsDropdown.getOptions(this.fieldsDropdown.options.length - 1).value);
+      }
     },
 
     /**
@@ -220,6 +240,7 @@ define([
           distinctFieldArr =
             this._getDistinctFields(this._entireFieldsArr, this._selectedFieldsArr);
           this._addFieldsRow(distinctFieldArr);
+          this._onFieldsSelectionChange();
         }
       })));
       this.own(on(this._fieldsTable, 'row-delete', lang.hitch(this, function (deletedRow) {
@@ -257,6 +278,7 @@ define([
       if (index > -1) {
         this._selectedFieldsArr.splice(index, 1);
       }
+      this.fieldsDropdown.removeOption(index);
       this._addSelectedFieldInOtherDropdown(deletedRow.fieldDropdownInstance.value, null);
     },
 
@@ -274,7 +296,7 @@ define([
       fieldDropdown.placeAt(fieldDropdownCell);
       fieldDropdown.startup();
       if (this._configuredField) {
-        fieldDropdown.set("value", this._configuredField);
+        fieldDropdown.set("value", this._configuredField, false);
       }
       fieldRow.fieldDropdownInstance = fieldDropdown;
       this.own(on(fieldDropdown, "change", lang.hitch(this, function (evt) {
@@ -283,6 +305,7 @@ define([
         this._selectedFieldsArr[fieldRow.rowIndex] = evt;
         this._addSelectedFieldInOtherDropdown(lastSelectedFieldOption, evt);
         this._removeSelectedFieldFromOtherDropdown(evt);
+        this._onFieldsSelectionChange();
       })));
       this._selectedFieldsArr.push(fieldDropdown.value);
       this._removeSelectedFieldFromOtherDropdown(fieldDropdown.value);
@@ -387,6 +410,7 @@ define([
       }
       configuredFieldDetailsObj.selectedFields = this.selectedFields;
       configuredFieldDetailsObj.groupbyfieldCheckBoxStatus = this.groupByFieldCheckBox.get("checked");
+      configuredFieldDetailsObj.sortInfo = this._getSortInfo();
       return configuredFieldDetailsObj;
     },
 
@@ -410,6 +434,69 @@ define([
         this.groupbyfieldCheckBoxStatus !== null &&
         this.groupbyfieldCheckBoxStatus !== undefined) {
         this.groupByFieldCheckBox.setValue(this.groupbyfieldCheckBoxStatus);
+      }
+    },
+
+    /**
+     * This function is used to get the current sorting settings
+     */
+    _getSortInfo: function () {
+      return {
+        sortOrder: this.ascRadioBtn.checked ? "Asc" : "Desc",
+        sortingField: this.fieldsDropdown.value
+      };
+    },
+  
+    /**
+     * This function is used to add option to sorting dropdown when new field is selected
+     * in select field fieldset
+     */
+    _onFieldsSelectionChange: function () {
+      this.fieldsDropdown.options = [];
+      array.forEach(this._selectedFieldsArr, lang.hitch(this, function (field) {
+        this.fieldsDropdown.addOption({
+          "label": this._entireFieldObj[field].alias || this._entireFieldObj[field].name,
+          "value": this._getFieldText(this._entireFieldObj[field], field)
+        });
+      }));
+      this._addStatisticsFieldOption();
+      this.fieldsDropdown.set("value", this.selectedSortingField);
+    },
+
+    /**
+     * This function is used get field name
+     */
+    _getFieldText: function (currentFieldObj, fieldName) {
+      if (currentFieldObj.label) {
+        return currentFieldObj.label;
+      } else if (currentFieldObj.alias) {
+        return currentFieldObj.alias;
+      } else {
+        return fieldName;
+      }
+    },
+
+    /**
+     * This function is used add default option to sort fields select based on layer geometry type
+     */
+    _addStatisticsFieldOption: function () {
+      if (this.featureLayer.geometryType === "esriGeometryPoint") {
+        this.fieldsDropdown.addOption({
+          "label": this.nls.analysisTab.statisticsCountLabel,
+          "value": "esriCTCountField"
+        });
+      }
+      if (this.featureLayer.geometryType === "esriGeometryPolyline") {
+        this.fieldsDropdown.addOption({
+          "label": this.nls.analysisTab.statisticsTotalLengthLabel,
+          "value": "esriCTTotalLengthField"
+        });
+      }
+      if (this.featureLayer.geometryType === "esriGeometryPolygon") {
+        this.fieldsDropdown.addOption({
+          "label": this.nls.analysisTab.statisticsTotalAreaLabel,
+          "value": "esriCTTotalAreaField"
+        });
       }
     }
   });

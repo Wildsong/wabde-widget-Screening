@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detail fitur berpotongan",
     "valueAriaLabel": "Nilai",
     "countAriaLabel": "Jumlah",
-    "layerNameWithFeatureCount": "Layer ${layerName} dengan ${featureCount} fitur persimpangan"
+    "layerNameWithFeatureCount": "Layer ${layerName} dengan ${featureCount} fitur persimpangan",
+    "sortingSettingsLegend": "Pengaturan Urutan",
+    "ascendingLabel": "Naik",
+    "descendingLabel": "Turun",
+    "sortFieldSelectLabel": "Pilih kolom urutan",
+    "errorLabel": "Server mengalami kesalahan sementara dan tidak dapat menyelesaikan kueri.",
+    "statisticsCountLabel": "Statistik: Jumlah",
+    "statisticsTotalLengthLabel": "Statistik: Panjang Total",
+    "statisticsTotalAreaLabel": "Statistik: Area Total",
+    "timedOutErrorLabel": "Waktu server habis",
+    "sortHint": "Petunjuk: Kolom yang dipilih hanya diurutkan jika jumlah fitur/grup lebih dari 1."
   }
 });

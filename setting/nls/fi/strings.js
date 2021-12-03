@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Ryhmittele kohteet sen kentän mukaan, jossa on sama arvo",
     "groupingHintDescription": "Vihje: oletusarvon mukaan kaikki kohteet, joilla on sama arvo määritetyissä kentissä, ryhmitellään ja näytetään yhtenä merkintänä raportissa. Poista käytöstä ryhmittely ominaisuustietojen perusteella, jos haluat sen sijaan nähdä kunkin kohteen merkinnän.",
     "addLayersHintText": "Vihje: valitse analyysin ja raporttiin sisällytettävät karttatasot ja kentät",
+    "queryCapabilityHintText": "Vain kyselyominaisuudet sisältävät karttatasot näytetään luettelossa",
     "addLayerNameTitle": "Karttatason nimi",
     "addFieldsLabel": "Lisää kenttä",
     "addFieldsPopupTitle": "Valitse kentät",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Aluekohde",
     "drawToolCircleLabel": "Ympyrä",
     "selectDrawToolsText": "Valitse piirtotyökalut, jotka ovat käytettävissä kiinnostusalueen luonnissa",
-    "selectingDrawToolErrorMessage": "Valitse vähintään yksi piirtotyökalu tai valintakarttataso, jotta voit käyttää AOI-työkalujen Piirtotyökalut-asetusta."
+    "selectingDrawToolErrorMessage": "Valitse vähintään yksi piirtotyökalu tai valintakarttataso, jotta voit käyttää AOI-työkalujen Piirtotyökalut-asetusta.",
+    "sortingSettingsLegend": "Lajitteluasetukset",
+    "ascendingLabel": "Nouseva",
+    "descendingLabel": "Laskeva",
+    "sortFieldSelectLabel": "Valitse lajittelukenttä",
+    "statisticsCountLabel": "Tilastotiedot: Määrä",
+    "statisticsTotalLengthLabel": "Tilastotiedot: Kokonaispituus",
+    "statisticsTotalAreaLabel": "Tilastotiedot: Kokonaisalue"
   },
   "downloadTab": {
     "downloadLegend": "Latausasetukset",

@@ -33,7 +33,8 @@ define([
   'jimu/utils',
   'dijit/focus',
   'dojo/keys',
-  "dojo/_base/event"
+  "dojo/_base/event",
+  "dojo/has"
 ], function (
   declare,
   lang,
@@ -54,7 +55,8 @@ define([
   jimuUtils,
   focusUtil,
   keys,
-  Event
+  Event,
+  has
 ) {
   return declare([BaseWidget, Evented], {
     // Set base class for custom impactSummaryReport widget
@@ -187,7 +189,7 @@ define([
         this.closePopup();
         this.emit("setFocusOnDownloadReportButton");
         //If app is running in android device,show confirm dialog for downloading the report
-        if (this.isAndroidDevice) {
+        if (this.isAndroidDevice || has("touch")) {
           this._startDownload();
         } else {
           this._chooseFileTypeToDownload();

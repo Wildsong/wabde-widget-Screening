@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Information om genomskuret geoobjekt",
     "valueAriaLabel": "Värde",
     "countAriaLabel": "Antal",
-    "layerNameWithFeatureCount": "${layerName} lager med ${featureCount} geoobjekt som skär varandra"
+    "layerNameWithFeatureCount": "${layerName} lager med ${featureCount} geoobjekt som skär varandra",
+    "sortingSettingsLegend": "Sorteringsinställningar",
+    "ascendingLabel": "Stigande",
+    "descendingLabel": "Fallande",
+    "sortFieldSelectLabel": "Välj sorteringsfält",
+    "errorLabel": "Servern stötte på ett tillfälligt fel och kunde inte slutföra frågan.",
+    "statisticsCountLabel": "Statistik: antal",
+    "statisticsTotalLengthLabel": "Statistik: total längd",
+    "statisticsTotalAreaLabel": "Statistik: total yta",
+    "timedOutErrorLabel": "Servern överskred tidsgränsen",
+    "sortHint": "Tips: Valda fält sorteras endast när antalet objekt/grupper är fler än 1."
   }
 });

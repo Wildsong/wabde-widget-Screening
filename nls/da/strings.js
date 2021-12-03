@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Oplysninger om objekter, der er gennemskåret",
     "valueAriaLabel": "Værdi",
     "countAriaLabel": "Tælling",
-    "layerNameWithFeatureCount": "${layerName} lag med ${featureCount} objekter, der gennemskærer hinanden"
+    "layerNameWithFeatureCount": "${layerName} lag med ${featureCount} objekter, der gennemskærer hinanden",
+    "sortingSettingsLegend": "Sorteringsindstillinger",
+    "ascendingLabel": "Stigende",
+    "descendingLabel": "Faldende",
+    "sortFieldSelectLabel": "Vælg sorteringsfelt",
+    "errorLabel": "Serveren stødte på et midlertidigt problem og kunne ikke fuldføre forespørgslen.",
+    "statisticsCountLabel": "Statistik: antal",
+    "statisticsTotalLengthLabel": "Statistik: samlet længde",
+    "statisticsTotalAreaLabel": "Statistik: samlet område",
+    "timedOutErrorLabel": "Udløb for server",
+    "sortHint": "Tip: Valgte felter sorteres kun, når antallet af objekter/grupper er over 1."
   }
 });

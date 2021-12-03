@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Chi tiết về đối tượng giao cắt",
     "valueAriaLabel": "Giá trị",
     "countAriaLabel": "Đếm",
-    "layerNameWithFeatureCount": "${layerName} lớp có ${featureCount} đối tượng giao cắt"
+    "layerNameWithFeatureCount": "${layerName} lớp có ${featureCount} đối tượng giao cắt",
+    "sortingSettingsLegend": "Sắp xếp Thiết Lập",
+    "ascendingLabel": "Tăng dần",
+    "descendingLabel": "Giảm dần",
+    "sortFieldSelectLabel": "Chọn trường sắp xếp",
+    "errorLabel": "Máy chủ đã gặp phải lỗi tạm thời và không thể hoàn tất truy vấn.",
+    "statisticsCountLabel": "Thống kê: Số lượng",
+    "statisticsTotalLengthLabel": "Thống kê: Tổng Chiều dài",
+    "statisticsTotalAreaLabel": "Thống kê: Tổng Diện tích",
+    "timedOutErrorLabel": "Hết thời gian chờ máy chủ",
+    "sortHint": "Mẹo: Các trường đã chọn chỉ được sắp xếp khi số đối tượng/nhóm lớn hơn 1."
   }
 });

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Agrupa les entitats pels camps amb el mateix valor",
     "groupingHintDescription": "Suggeriment: per defecte, totes les entitats amb el mateix valor per als camps seleccionats s'agruparan per mostrar-se com una sola entrada a l'informe. Deshabiliteu l'agrupació per atributs iguals per mostrar una entrada per a cada entitat en lloc seu.",
     "addLayersHintText": "Suggeriment: trieu les capes i els camps que s'inclouran a l'anàlisi i a l'informe",
+    "queryCapabilityHintText": "Només es mostraran les capes amb funcions de consulta",
     "addLayerNameTitle": "Nom de la capa",
     "addFieldsLabel": "Afegeix un camp",
     "addFieldsPopupTitle": "Seleccioneu els camps",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polígon",
     "drawToolCircleLabel": "Cercle",
     "selectDrawToolsText": "Trieu les eines de dibuix disponibles per crear l'àrea d'interès",
-    "selectingDrawToolErrorMessage": "Trieu com a mínim una eina de dibuix o una capa de selecció per utilitzar l'opció Eines de dibuix per a Eines AOI."
+    "selectingDrawToolErrorMessage": "Trieu com a mínim una eina de dibuix o una capa de selecció per utilitzar l'opció Eines de dibuix per a Eines AOI.",
+    "sortingSettingsLegend": "Configuració d'ordenació",
+    "ascendingLabel": "Ascendent",
+    "descendingLabel": "Descendent",
+    "sortFieldSelectLabel": "Seleccioneu el camp d'ordenació",
+    "statisticsCountLabel": "Estadístiques: recompte",
+    "statisticsTotalLengthLabel": "Estadístiques: longitud total",
+    "statisticsTotalAreaLabel": "Estadístiques: àrea total"
   },
   "downloadTab": {
     "downloadLegend": "Configuració de baixada",

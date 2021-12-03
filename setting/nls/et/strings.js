@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupeeri objektid veerust sama väärtuse alusel",
     "groupingHintDescription": "Vihje: vaikimisi grupeeritakse kõik objektid, mille valitud väljadel on sama väärtus, nii, et need kuvataks aruandes ühe kirjena. Keelake grupeerimine sarnaste atribuutide alusel, et kuvada iga objekti jaoks omaette kirje.",
     "addLayersHintText": "Vihje: valige kihid ja väljad, mis kaasatakse analüüsi ja aruandesse",
+    "queryCapabilityHintText": "Loetletakse ainult päringuga kihte",
     "addLayerNameTitle": "Kihi nimi",
     "addFieldsLabel": "Lisa väli",
     "addFieldsPopupTitle": "Vali väljad",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polügoon",
     "drawToolCircleLabel": "Ring",
     "selectDrawToolsText": "Valige joonistamise töövahendid, mis on saadaval huviala loomiseks.",
-    "selectingDrawToolErrorMessage": "Valige vähemalt üks joonistamise töövahend või valikukiht, et kasutada AOI töövahendite jaoks valikut Joonistamise töövahendid."
+    "selectingDrawToolErrorMessage": "Valige vähemalt üks joonistamise töövahend või valikukiht, et kasutada AOI töövahendite jaoks valikut Joonistamise töövahendid.",
+    "sortingSettingsLegend": "Sortimisseaded",
+    "ascendingLabel": "Kasvav",
+    "descendingLabel": "Kahanev",
+    "sortFieldSelectLabel": "Vali sortimisväli",
+    "statisticsCountLabel": "Statistika: arv",
+    "statisticsTotalLengthLabel": "Statistika: kogupikkus",
+    "statisticsTotalAreaLabel": "Statistika: kogupindala"
   },
   "downloadTab": {
     "downloadLegend": "Allalaadimissätted",

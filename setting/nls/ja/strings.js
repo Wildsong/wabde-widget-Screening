@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "フィールドの同じ値でフィーチャをグループ化",
     "groupingHintDescription": "ヒント: デフォルトでは、選択したフィールドに同じ値を持つすべてのフィーチャはグループ化され、レポート内で 1 つのエントリとして表示されます。 like 属性によるグループ化を無効にすると、代わりにフィーチャごとにエントリが表示されます。",
     "addLayersHintText": "ヒント: 解析とレポートに含めるレイヤーとフィールドを選択します",
+    "queryCapabilityHintText": "クエリ機能があるレイヤーだけが一覧表示されます。",
     "addLayerNameTitle": "レイヤー名",
     "addFieldsLabel": "フィールドの追加",
     "addFieldsPopupTitle": "フィールド選択",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "ポリゴン",
     "drawToolCircleLabel": "円",
     "selectDrawToolsText": "対象地域の作成に使用できる描画ツールを選択します",
-    "selectingDrawToolErrorMessage": "描画ツールまたは選択レイヤーを少なくとも 1 つ選択して、AOI ツールの [図形描画ツール] オプションを使用します。"
+    "selectingDrawToolErrorMessage": "描画ツールまたは選択レイヤーを少なくとも 1 つ選択して、AOI ツールの [図形描画ツール] オプションを使用します。",
+    "sortingSettingsLegend": "並べ替え設定",
+    "ascendingLabel": "昇順",
+    "descendingLabel": "降順",
+    "sortFieldSelectLabel": "並べ替えフィールドを選択",
+    "statisticsCountLabel": "統計: カウント",
+    "statisticsTotalLengthLabel": "統計: 全長",
+    "statisticsTotalAreaLabel": "統計: 合計面積"
   },
   "downloadTab": {
     "downloadLegend": "ダウンロード設定",

@@ -52,3 +52,6 @@
   float: left;
 }
 /* co-ordinates tab ends */
+.jimu-widget-screening .esriCTFieldSet {
+  color: #ffffff !important;
+}

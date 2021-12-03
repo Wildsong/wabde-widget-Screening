@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Gruppera geoobjekt efter fält med samma värde",
     "groupingHintDescription": "Tips! Som standard grupperas alla geoobjekt med samma värde för de valda fälten så att de ser ut som en enda post i rapporten. Inaktivera gruppering efter likadana attribut för att visa en post för varje geoobjekt istället.",
     "addLayersHintText": "Tips! Välj de lager och fält som ska ingå i analysen och rapporten",
+    "queryCapabilityHintText": "Endast lager med frågefunktioner kommer att listas",
     "addLayerNameTitle": "Lagernamn",
     "addFieldsLabel": "Lägg till fält",
     "addFieldsPopupTitle": "Välj fält",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygon",
     "drawToolCircleLabel": "Cirkel",
     "selectDrawToolsText": "Välj de ritverktyg som är tillgängliga för att skapa intresseområdet",
-    "selectingDrawToolErrorMessage": "Välj minst ett ritverktyg eller urvalslager för att använda alternativet Ritverktyg för AOI-verktyg."
+    "selectingDrawToolErrorMessage": "Välj minst ett ritverktyg eller urvalslager för att använda alternativet Ritverktyg för AOI-verktyg.",
+    "sortingSettingsLegend": "Sorteringsinställningar",
+    "ascendingLabel": "Stigande",
+    "descendingLabel": "Fallande",
+    "sortFieldSelectLabel": "Välj sorteringsfält",
+    "statisticsCountLabel": "Statistik: antal",
+    "statisticsTotalLengthLabel": "Statistik: total längd",
+    "statisticsTotalAreaLabel": "Statistik: total yta"
   },
   "downloadTab": {
     "downloadLegend": "Hämtningsinställningar",

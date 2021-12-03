@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Ristmiku objekti detail",
     "valueAriaLabel": "Väärtus",
     "countAriaLabel": "Koguarv",
-    "layerNameWithFeatureCount": "${layerName} kiht ${featureCount} lõikuva objektiga"
+    "layerNameWithFeatureCount": "${layerName} kiht ${featureCount} lõikuva objektiga",
+    "sortingSettingsLegend": "Sortimisseaded",
+    "ascendingLabel": "Kasvav",
+    "descendingLabel": "Kahanev",
+    "sortFieldSelectLabel": "Vali sortimisväli",
+    "errorLabel": "Serveris ilmnes ajutine tõrge ja päringut ei saanud lõpule viia.",
+    "statisticsCountLabel": "Statistika: arv",
+    "statisticsTotalLengthLabel": "Statistika: kogupikkus",
+    "statisticsTotalAreaLabel": "Statistika: kogupindala",
+    "timedOutErrorLabel": "Serveri ajalõpp",
+    "sortHint": "Vihje. Valitud väljad sorditakse ainult juhul, kui objektide/gruppide arv on suurem kui 1."
   }
 });

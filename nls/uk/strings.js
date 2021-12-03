@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Відомості про об'єкт, що перетинається",
     "valueAriaLabel": "Значення",
     "countAriaLabel": "Кількість",
-    "layerNameWithFeatureCount": "Шар ${layerName} з об'єктами, які перетинаються ${featureCount}"
+    "layerNameWithFeatureCount": "Шар ${layerName} з об'єктами, які перетинаються ${featureCount}",
+    "sortingSettingsLegend": "Параметри сортування",
+    "ascendingLabel": "У висхідному порядку",
+    "descendingLabel": "У низхідному порядку",
+    "sortFieldSelectLabel": "Вибрати поле сортування",
+    "errorLabel": "Сервер виявив тимчасову помилку та не зміг завершити запит.",
+    "statisticsCountLabel": "Статистика: Кількість",
+    "statisticsTotalLengthLabel": "Статистика: Загальна довжина",
+    "statisticsTotalAreaLabel": "Статистика: Загальна площа",
+    "timedOutErrorLabel": "Вичерпано час очікування сервера",
+    "sortHint": "Підказка: вибрані поля сортуються лише тоді, коли кількість об’єктів/груп більше 1."
   }
 });

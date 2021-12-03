@@ -27,3 +27,6 @@
 .jimu-widget-screening .esriCTAttrTableHighlighted td {
   background-color: #E2F0FB;
 }
+.jimu-widget-screening .esriCTFieldSet {
+  color: #596679 !important;
+}

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Grupiraj geoobjekte prema polju s istom vrijednosti",
     "groupingHintDescription": "Savjet: Prema zadanim postavkama, svi geoobjekti s istom vrijednosti u odabranim poljima bit će grupirani tako da izgledaju kao jedan unosa u izvješću. Onemogući grupiranje prema jednakim atributima kako bi se umjesto toga prikazao unos za svaki geoobjekt.",
     "addLayersHintText": "Savjet: odaberite slojeve i polja za uključivanje u analizu i izvješće",
+    "queryCapabilityHintText": "Bit će navedeni samo slojevi s mogućnostima upita",
     "addLayerNameTitle": "Naziv sloja",
     "addFieldsLabel": "Dodaj polje",
     "addFieldsPopupTitle": "Odaberi polja",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligon",
     "drawToolCircleLabel": "Krug",
     "selectDrawToolsText": "Odaberite dostupne alate za crtanje za stvaranje područja interesa",
-    "selectingDrawToolErrorMessage": "Odaberite barem jedan alat za crtanje ili sloj odabira za upotrebu opcije Alati za crtanje za alate AOI."
+    "selectingDrawToolErrorMessage": "Odaberite barem jedan alat za crtanje ili sloj odabira za upotrebu opcije Alati za crtanje za alate AOI.",
+    "sortingSettingsLegend": "Postavke sortiranja",
+    "ascendingLabel": "Uzlazno",
+    "descendingLabel": "Silazno",
+    "sortFieldSelectLabel": "Odaberi polje za sortiranje",
+    "statisticsCountLabel": "Statistike: Broj",
+    "statisticsTotalLengthLabel": "Statistike: Ukupna duljina",
+    "statisticsTotalAreaLabel": "Statistike: Ukupna površina"
   },
   "downloadTab": {
     "downloadLegend": "Postavke preuzimanja",

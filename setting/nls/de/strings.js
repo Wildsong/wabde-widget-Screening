@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Features nach Feld mit demselben Wert gruppieren",
     "groupingHintDescription": "Hinweis: Standardmäßig werden alle Features mit demselben Wert für die ausgewählten Felder gruppiert und im Bericht als ein einziger Eintrag dargestellt. Deaktivieren Sie die Gruppierung nach ähnlichen Attributen, um stattdessen einen Eintrag für jedes Feature anzuzeigen.",
     "addLayersHintText": "Hinweis: Wählen Sie die Layer und Felder aus, die in die Analyse und den Bericht einbezogen werden sollen.",
+    "queryCapabilityHintText": "Nur Layer mit Abfragefunktionen werden aufgeführt",
     "addLayerNameTitle": "Layer-Name",
     "addFieldsLabel": "Feld hinzufügen",
     "addFieldsPopupTitle": "Felder auswählen",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygon",
     "drawToolCircleLabel": "Kreis",
     "selectDrawToolsText": "Zeichenwerkzeuge zum Erstellen des Interessenbereichs auswählen",
-    "selectingDrawToolErrorMessage": "Wählen Sie mindestens ein Zeichenwerkzeug oder einen Auswahl-Layer aus, das bzw. der die Option \"Zeichenwerkzeuge\" für AOI-Werkzeuge verwenden soll."
+    "selectingDrawToolErrorMessage": "Wählen Sie mindestens ein Zeichenwerkzeug oder einen Auswahl-Layer aus, das bzw. der die Option \"Zeichenwerkzeuge\" für AOI-Werkzeuge verwenden soll.",
+    "sortingSettingsLegend": "Sortiereinstellungen",
+    "ascendingLabel": "Aufsteigend",
+    "descendingLabel": "Absteigend",
+    "sortFieldSelectLabel": "Sortierfeld auswählen",
+    "statisticsCountLabel": "Statistiken: Anzahl",
+    "statisticsTotalLengthLabel": "Statistiken: Gesamtlänge",
+    "statisticsTotalAreaLabel": "Statistiken: Gesamtfläche"
   },
   "downloadTab": {
     "downloadLegend": "Downloadeinstellungen",

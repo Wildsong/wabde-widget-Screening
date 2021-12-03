@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Λεπτομέρεια τεμνόμενων στοιχείων",
     "valueAriaLabel": "Τιμή",
     "countAriaLabel": "Αριθμός",
-    "layerNameWithFeatureCount": "${layerName} θεματικό επίπεδο με ${featureCount} τεμνόμενα στοιχεία"
+    "layerNameWithFeatureCount": "${layerName} θεματικό επίπεδο με ${featureCount} τεμνόμενα στοιχεία",
+    "sortingSettingsLegend": "Ρυθμίσεις ταξινόμησης",
+    "ascendingLabel": "Αύξουσα",
+    "descendingLabel": "Φθίνουσα",
+    "sortFieldSelectLabel": "Επιλογή πεδίου ταξινόμησης",
+    "errorLabel": "Ο διακομιστής αντιμετώπισε προσωρινό σφάλμα και δεν μπόρεσε να ολοκληρώσει το ερώτημα.",
+    "statisticsCountLabel": "Στατιστικά: Συνολικός αριθμός",
+    "statisticsTotalLengthLabel": "Στατιστικά: Συνολικό μήκος",
+    "statisticsTotalAreaLabel": "Στατιστικά: Συνολική περιοχή",
+    "timedOutErrorLabel": "Το χρονικό όριο του διακομιστή έληξε.",
+    "sortHint": "Υπόδειξη: Τα επιλεγμένα πεδία ταξινομούνται μόνο όταν ο αριθμός των στοιχείων/ομάδων είναι μεγαλύτερος από 1."
   }
 });

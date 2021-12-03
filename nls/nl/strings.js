@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detail overeenkomende objecten",
     "valueAriaLabel": "Waarde",
     "countAriaLabel": "Aantal",
-    "layerNameWithFeatureCount": "${layerName} kaartlaag met ${featureCount} kruisende objecten"
+    "layerNameWithFeatureCount": "${layerName} kaartlaag met ${featureCount} kruisende objecten",
+    "sortingSettingsLegend": "Instellingen sorteren",
+    "ascendingLabel": "Oplopend",
+    "descendingLabel": "Aflopend",
+    "sortFieldSelectLabel": "Sorteerveld selecteren",
+    "errorLabel": "Er is een tijdelijke fout opgetreden in de server waardoor de query niet voltooid kon worden.",
+    "statisticsCountLabel": "Statistieken: aantal",
+    "statisticsTotalLengthLabel": "Statistieken: totale lengte",
+    "statisticsTotalAreaLabel": "Statistieken: totaal gebied",
+    "timedOutErrorLabel": "Time-out server",
+    "sortHint": "Tip: Geselecteerde velden worden alleen gesorteerd als het aantal objecten/groepen meer dan 1 is."
   }
 });

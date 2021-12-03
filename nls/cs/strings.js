@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Podrobnosti protínajícího prvku",
     "valueAriaLabel": "Hodnota",
     "countAriaLabel": "Počet",
-    "layerNameWithFeatureCount": "${layerName} vrstva s ${featureCount} protínajícími se prvky"
+    "layerNameWithFeatureCount": "${layerName} vrstva s ${featureCount} protínajícími se prvky",
+    "sortingSettingsLegend": "Nastavení třídění",
+    "ascendingLabel": "Vzestupně",
+    "descendingLabel": "Sestupně",
+    "sortFieldSelectLabel": "Vybrat pole třídění",
+    "errorLabel": "Došlo k dočasné chybě serveru a nebylo možné dokončit dotaz.",
+    "statisticsCountLabel": "Statistiky: počet",
+    "statisticsTotalLengthLabel": "Statistiky: celková délka",
+    "statisticsTotalAreaLabel": "Statistiky: celková plocha",
+    "timedOutErrorLabel": "Vypršel časový limit serveru",
+    "sortHint": "Rada: Vybraná pole jsou seřazena pouze v případě, že počet prvků/skupin je větší než 1."
   }
 });

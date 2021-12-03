@@ -693,7 +693,8 @@ define([
         selectedFields: tr.selectedFields,
         groupbyfieldCheckBoxStatus: tr.groupbyfieldCheckBoxStatus,
         layerGridInfo: layerGridInfo,
-        layerInfo: this._layerInfosObj.getLayerInfoById(layerGridInfo.layer.layerObject.id)
+        layerInfo: this._layerInfosObj.getLayerInfoById(layerGridInfo.layer.layerObject.id),
+        currentRow: tr
       };
       this._createFieldSelectorPopup(args, tr);
     },
@@ -732,9 +733,13 @@ define([
       okButton.onClick = lang.hitch(this, function () {
         var tempLabelsObj = {};
         isValid = true;
+        if (!this._curRow.sortInfo) {
+          this._curRow.sortInfo = {};
+        }
         var configuredFieldDetailsObj = sourceDijit.okButtonClicked();
         this._curRow.selectedFields = configuredFieldDetailsObj.selectedFields;
         this._curRow.groupbyfieldCheckBoxStatus = configuredFieldDetailsObj.groupbyfieldCheckBoxStatus;
+        this._curRow.sortInfo = configuredFieldDetailsObj.sortInfo;
         this._validateFields(this._curRow.selectedFields, this._curRow);
         for (var key in this._curRow.selectedFields) {
           if (this._curRow.selectedFields[key].label.trim() !== "") {
@@ -1227,6 +1232,24 @@ define([
           layerItem = this._getLayerInfo(tr, getCapabilities);
           layerItem.selectedFields = tr.selectedFields;
           layerItem.groupbyfieldCheckBoxStatus = tr.groupbyfieldCheckBoxStatus;
+          if (!tr.sortInfo) {
+            tr.sortInfo = {
+              sortOrder: "Asc",
+              sortingField: ""
+            };
+            if (layerItem || layerItem.geometryType) {
+              if (layerItem.geometryType === "esriGeometryPoint") {
+                tr.sortInfo.sortingField = "esriCTCountField";
+              }
+              if (layerItem.geometryType === "esriGeometryPolyline") {
+                tr.sortInfo.sortingField = "esriCTTotalLengthField";
+              }
+              if (layerItem.geometryType === "esriGeometryPolygon") {
+                tr.sortInfo.sortingField = "esriCTTotalAreaField";
+              }
+            }
+          }
+          layerItem.sortInfo = tr.sortInfo;
           selectedLayersArr.push(layerItem);
         }
       }));
@@ -1511,6 +1534,10 @@ define([
       if (result.success && result.tr) {
         tr = result.tr;
         selectedFields = layerInfo.selectedFields;
+        if (layerInfo.sortInfo) {
+          tr.sortInfo = layerInfo.sortInfo;
+        }
+
         if (!selectedFields) {
           selectedFields = {};
           popupInfo = layerInfo.getPopupInfo();

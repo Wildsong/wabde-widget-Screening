@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detalle de entidad de intersección",
     "valueAriaLabel": "Valor",
     "countAriaLabel": "Recuento",
-    "layerNameWithFeatureCount": "Capa ${layerName} con ${featureCount} entidades de intersección"
+    "layerNameWithFeatureCount": "Capa ${layerName} con ${featureCount} entidades de intersección",
+    "sortingSettingsLegend": "Configuración de ordenación",
+    "ascendingLabel": "Ascendente",
+    "descendingLabel": "Descendente",
+    "sortFieldSelectLabel": "Seleccionar campo de ordenación",
+    "errorLabel": "El servidor detectó un error temporal y no ha podido completar la consulta.",
+    "statisticsCountLabel": "Estadísticas: Recuento",
+    "statisticsTotalLengthLabel": "Estadísticas: Longitud total",
+    "statisticsTotalAreaLabel": "Estadísticas: Área total",
+    "timedOutErrorLabel": "Tiempo de espera del servidor agotado",
+    "sortHint": "Sugerencia: Los campos seleccionados se ordenan solo cuando el número de entidades/grupos es superior a 1."
   }
 });

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Details zu überschnittenem Feature",
     "valueAriaLabel": "Wert",
     "countAriaLabel": "Anzahl",
-    "layerNameWithFeatureCount": "Layer \"${layerName}\" mit ${featureCount} überschneidenden Features"
+    "layerNameWithFeatureCount": "Layer \"${layerName}\" mit ${featureCount} überschneidenden Features",
+    "sortingSettingsLegend": "Sortiereinstellungen",
+    "ascendingLabel": "Aufsteigend",
+    "descendingLabel": "Absteigend",
+    "sortFieldSelectLabel": "Sortierfeld auswählen",
+    "errorLabel": "Auf dem Server ist ein temporärer Fehler aufgetreten, sodass die Abfrage nicht abgeschlossen werden konnte.",
+    "statisticsCountLabel": "Statistiken: Anzahl",
+    "statisticsTotalLengthLabel": "Statistiken: Gesamtlänge",
+    "statisticsTotalAreaLabel": "Statistiken: Gesamtfläche",
+    "timedOutErrorLabel": "Server-Timeout",
+    "sortHint": "Hinweis: Ausgewählte Felder werden nur sortiert, wenn die Anzahl der Features/Gruppen größer als 1 ist."
   }
 });

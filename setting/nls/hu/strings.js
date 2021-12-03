@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Vektoros elemek csoportosítása azonos értékkel rendelkező mező szerint.",
     "groupingHintDescription": "Tipp: Alapértelmezés szerint a kijelölt mezőkben azonos értéket tartalmazó összes vektoros elem csoportosítva, egyetlen bejegyzésként jelenik meg a jelentésben. Tiltsa le a hasonló attribútumok szerinti csoportosítást, ha minden egyes vektoros elemhez külön bejegyzést szeretne megjeleníteni.",
     "addLayersHintText": "Tipp: Válassza ki az elemzésben és a jelentésben szerepeltetni kívánt mezőket.",
+    "queryCapabilityHintText": "Csak a lekérdezési képességekkel rendelkező rétegek lesznek felsorolva",
     "addLayerNameTitle": "Réteg neve",
     "addFieldsLabel": "Mező hozzáadása",
     "addFieldsPopupTitle": "Mezők kiválasztása",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygon",
     "drawToolCircleLabel": "Kör",
     "selectDrawToolsText": "Válassza ki a vizsgálati terület létrehozásához rendelkezésre álló rajzolóeszközöket.",
-    "selectingDrawToolErrorMessage": "Válasszon ki legalább egy olyan rajzolóeszközt vagy kiválasztási réteget, amelyet az AOI eszközök Rajzeszközök lehetőségénél kíván felhasználni."
+    "selectingDrawToolErrorMessage": "Válasszon ki legalább egy olyan rajzolóeszközt vagy kiválasztási réteget, amelyet az AOI eszközök Rajzeszközök lehetőségénél kíván felhasználni.",
+    "sortingSettingsLegend": "Rendezés beállításai",
+    "ascendingLabel": "Növekvő",
+    "descendingLabel": "Csökkenő",
+    "sortFieldSelectLabel": "Rendezési mező kiválasztása",
+    "statisticsCountLabel": "Statisztika: Számlálás",
+    "statisticsTotalLengthLabel": "Statisztika: Teljes hossz",
+    "statisticsTotalAreaLabel": "Statisztika: Teljes terület"
   },
   "downloadTab": {
     "downloadLegend": "Letöltési beállítások",

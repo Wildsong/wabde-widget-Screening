@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "รายละเอียดฟีเจอร์ที่ตัดกัน",
     "valueAriaLabel": "ค่า",
     "countAriaLabel": "นับ",
-    "layerNameWithFeatureCount": "${layerName} ชั้นข้อมูลที่มี ${featureCount} ฟีเจอร์ตัดกัน"
+    "layerNameWithFeatureCount": "${layerName} ชั้นข้อมูลที่มี ${featureCount} ฟีเจอร์ตัดกัน",
+    "sortingSettingsLegend": "การตั้งค่าการเรียงลำดับ",
+    "ascendingLabel": "เรียงจากน้อยไปมาก",
+    "descendingLabel": "เรียงจากมากไปน้อย",
+    "sortFieldSelectLabel": "เลือกฟิลด์การเรียง",
+    "errorLabel": "เซิร์ฟเวอร์พบข้อผิดพลาดชั่วคราวและไม่สามารถดำเนินการค้นหาให้เสร็จสิ้น",
+    "statisticsCountLabel": "สถิติ: นับ",
+    "statisticsTotalLengthLabel": "สถิติ: ระยะทั้งหมด",
+    "statisticsTotalAreaLabel": "สถิติ: พื้นที่รวม",
+    "timedOutErrorLabel": "เซิร์ฟเวอร์หมดเวลา",
+    "sortHint": "คำแนะนำ: ฟิลด์ที่เลือกจะถูกจัดเรียงเฉพาะเมื่อจำนวนของคุณสมบัติ/กลุ่มมากกว่า 1"
   }
 });

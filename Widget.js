@@ -187,11 +187,15 @@ define([
     _isMapOnlyOptionAvailable: false,
     _impactSummaryReportObjList: [], // to store all instances of impactSummaryReportObj
     _changedFieldsObj: {}, // to store changed field with corresponding layers
+    _changedSortInfoObj: {}, // to store changed sort settings with corresponding layers
     _isKeyPressed: false,
     _alertMessageObj: null,
     _allowFocusOnFirstNode: true,
     _isSingleTabSelected: false,
     _isKeyPressedOnDownloadDialog: false,
+    sortFieldIndex: null,
+    sortOrder: null,
+    sortFieldType: null,
 
     constructor: function (options) {
       this._bufferValue = null;
@@ -221,11 +225,15 @@ define([
       this._isMapOnlyOptionAvailable = false;
       this._impactSummaryReportObjList = [];
       this._changedFieldsObj = {};
+      this._changedSortInfoObj = {};
       this._isKeyPressed = false;
       this._alertMessageObj = null;
       this._allowFocusOnFirstNode = true;
       this._isSingleTabSelected = false;
       this._isKeyPressedOnDownloadDialog = false;
+      this.sortFieldIndex = null;
+      this.sortOrder = null;
+      this.sortFieldType = null;
       lang.mixin(this, options);
     },
 
@@ -899,6 +907,7 @@ define([
      */
     _onBackButtonClick: function () {
       this._getImpactReportSelectedFields();
+      this._getImpactReportSortInfo();
       domClass.remove(this.aoiLabelContainer, "esriCTHidden");
       domClass.add(this.reportLabelContainer, "esriCTHidden");
       this._showPanel("aoiTabParentContainer", true);
@@ -915,12 +924,23 @@ define([
     },
 
     /**
+     * This function is to create object of layers with its corresponding sort Settings
+     * @memberOf Screening/Widget
+     */
+    _getImpactReportSortInfo: function () {
+      array.forEach(this._impactSummaryReportObjList, lang.hitch(this, function (impactSummaryReportObj) {
+        this._changedSortInfoObj[impactSummaryReportObj.layerID] = impactSummaryReportObj.sortInfo;
+      }));
+    },
+
+    /**
      * This function is to refresh the report panel
      * @memberOf Screening/Widget
      */
     _refreshReportPanel: function () {
       this._isReportGenerated = false;
       this._getImpactReportSelectedFields();
+      this._getImpactReportSortInfo();
       this._onReportTabClick();
     },
 
@@ -1403,14 +1423,38 @@ define([
      * Sorts the data based on last col values
      */
     _sortFeatureArray: function (a, b) {
-      var lastIndex = a.length - 1;
-      if (a[lastIndex] < b[lastIndex]) {
-        return 1;
+      var numberCompare = ["esriFieldTypeOID", "esriFieldTypeSmallInteger",
+        "esriFieldTypeInteger", "esriFieldTypeSingle", "esriFieldTypeDouble", "esriFieldTypeDate"];
+      var _a = a[this.sortFieldIndex];
+      var _b = b[this.sortFieldIndex];
+
+      if (_a === "<i>" + this.nls.reportsTab.noDataText + "</i>" ||
+        _a === "<i>" + this.nls.reportsTab.notApplicableText + "</i>") {
+        _a = "";
       }
-      if (a[lastIndex] > b[lastIndex]) {
-        return -1;
+      if (_b === "<i>" + this.nls.reportsTab.noDataText + "</i>" ||
+        _a === "<i>" + this.nls.reportsTab.notApplicableText + "</i>") {
+        _b = "";
       }
-      return 0;
+
+      if (typeof (_a) === 'undefined' || _a === null || _a === "") {
+        return this.sortOrder === "Desc" ? -1 : 1;
+      } else if (typeof (_b) === 'undefined' || _b === null || _b === "") {
+        return this.sortOrder === "Desc" ? 1 : -1;
+      } else if (_a === _b) {
+        return 0;
+      }
+
+      if (this.sortFieldType === "esriFieldTypeDate") {
+        _a = new Date(_a).getTime();
+        _b = new Date(_b).getTime();
+      }
+
+      if (numberCompare.indexOf(this.sortFieldType) !== -1) {
+        return jimuUtils.parseNumber(_a) - jimuUtils.parseNumber(_b);
+      } else {
+        return _a.toString().localeCompare(_b.toString());
+      }
     },
 
     /**
@@ -1667,9 +1711,19 @@ define([
               aggregatedData.rows.push(newRowInaggregatedData);
             }
             if (aggregatedData.rows && aggregatedData.rows.length > 0) {
-              /*sort data in descending order so that rows for which measurement are not to be shown
-               will be shifted to bottom*/
-              aggregatedData.rows = aggregatedData.rows.sort(this._sortFeatureArray);
+              //statistics fields will always be at the end of the column array
+              var statisticsFieldsArr = ["esriCTCountField", "esriCTTotalLengthField", "esriCTTotalAreaField"];
+              if (statisticsFieldsArr.indexOf(this._printData[id].sortInfo.sortingField) !== -1) {
+                this.sortFieldIndex = aggregatedData.cols.length - 1;
+              } else {
+                this.sortFieldIndex = aggregatedData.cols.indexOf(this._printData[id].sortInfo.sortingField);
+              }
+              this.sortOrder = this._printData[id].sortInfo.sortOrder;
+              this.sortFieldType = this._getFieldType(id, this._printData[id]);
+              aggregatedData.rows = aggregatedData.rows.sort(lang.hitch(this, this._sortFeatureArray));
+              if (this._printData[id].sortInfo.sortOrder === "Desc") {
+                aggregatedData.rows.reverse();
+              }
               //if last col in row have value 0 show N/A
               aggregatedData.rows = array.map(aggregatedData.rows,
                 lang.hitch(this, this._setNotApplicableRows));
@@ -2197,6 +2251,19 @@ define([
             } else {
               grpbyfieldCheckBoxStatus = true;
             }
+            var defaultSortInfo = {
+              sortOrder: "Asc",
+              sortingField: ""
+            };
+            if (layer.geometryType === "esriGeometryPoint") {
+              defaultSortInfo.sortingField = "esriCTCountField";
+            }
+            if (layer.geometryType === "esriGeometryPolyline") {
+              defaultSortInfo.sortingField = "esriCTTotalLengthField";
+            }
+            if (layer.geometryType === "esriGeometryPolygon") {
+              defaultSortInfo.sortingField = "esriCTTotalAreaField";
+            }
             var impactSummaryReportObj = new ImpactSummaryReport({
               id: layer.id,
               nls: this.nls,
@@ -2213,7 +2280,8 @@ define([
               highlightGraphicsLayer: this._highlightGraphicsLayer,
               retainSelectedFieldsArr: null,
               domNodeObj: this.domNode,
-              groupbyfieldCheckBoxStatus: grpbyfieldCheckBoxStatus
+              groupbyfieldCheckBoxStatus: grpbyfieldCheckBoxStatus,
+              sortInfo: defaultSortInfo
             });
             //place uploaded shapeFile layer at top in the list
             domConstruct.place(impactSummaryReportObj.domNode,
@@ -2221,6 +2289,7 @@ define([
             this.own(on(impactSummaryReportObj, "printDataUpdated",
               lang.hitch(this, function (details) {
                 this._printData[details.id].info = details.printData;
+                this._printData[details.id].sortInfo = details.sortInfo;
               })));
             this.own(on(impactSummaryReportObj, 'initializeAccessibility', lang.hitch(this, function () {
               this._setAccessibility();
@@ -2245,7 +2314,8 @@ define([
                     layerName: layer.name,
                     url: null,
                     isShapeFile: true,
-                    layer: layer
+                    layer: layer,
+                    configuredField: this._getFormattedFieldObj(layer.fields)
                   });
                   //if print icon is disabled enable if features
                   //are intersecting in uploaded shapefile
@@ -3160,7 +3230,7 @@ define([
      */
     _initializeImpactSummaryReportWidget: function () {
       var i, impactSummaryReportObj, featureLayerObj, promiseList, completeAOIGeometry,
-        completeToleranceGeometry, allPointGeometries, retainSelectedFields;
+        completeToleranceGeometry, allPointGeometries, retainSelectedFields, retainSortingInfo;
       promiseList = [];
       this._isExceedingMaxRecordCount = false;
       domConstruct.empty(this.impactSummaryReportContainer);
@@ -3176,6 +3246,10 @@ define([
           if (this._changedFieldsObj[featureLayerObj.id]) {
             retainSelectedFields = this._changedFieldsObj[featureLayerObj.id];
           }
+          //check for previous sort settings are exist and if exist then use them
+          if (this._changedSortInfoObj[featureLayerObj.id]) {
+            retainSortingInfo = this._changedSortInfoObj[featureLayerObj.id];
+          }
           var grpbyfieldCheckBoxStatus;
           if (this.config.layers[i].hasOwnProperty("groupbyfieldCheckBoxStatus")) {
             grpbyfieldCheckBoxStatus = this.config.layers[i].groupbyfieldCheckBoxStatus;
@@ -3185,6 +3259,23 @@ define([
             } else {
               grpbyfieldCheckBoxStatus = true;
             }
+          }
+          //For Backward
+          if (!this.config.layers[i].sortInfo) {
+            var defaultSortInfo = {
+              sortOrder: "Asc",
+              sortingField: ""
+            };
+            if (this.map.getLayer(this.config.layers[i].id).geometryType === "esriGeometryPoint") {
+              defaultSortInfo.sortingField = "esriCTCountField";
+            }
+            if (this.map.getLayer(this.config.layers[i].id).geometryType === "esriGeometryPolyline") {
+              defaultSortInfo.sortingField = "esriCTTotalLengthField";
+            }
+            if (this.map.getLayer(this.config.layers[i].id).geometryType === "esriGeometryPolygon") {
+              defaultSortInfo.sortingField = "esriCTTotalAreaField";
+            }
+            this.config.layers[i]["sortInfo"] = defaultSortInfo;
           }
           impactSummaryReportObj = new ImpactSummaryReport({
             id: featureLayerObj.id + "_" + i + Date.now(),
@@ -3201,7 +3292,9 @@ define([
             highlightGraphicsLayer: this._highlightGraphicsLayer,
             layerID: featureLayerObj.id,
             retainSelectedFieldsArr: retainSelectedFields,
+            retainSortingInfo: retainSortingInfo,
             domNodeObj: this.domNode,
+            sortInfo: retainSortingInfo ? retainSortingInfo : this.config.layers[i].sortInfo,
             groupbyfieldCheckBoxStatus: grpbyfieldCheckBoxStatus
           }, domConstruct.create("div", {}, this.impactSummaryReportContainer));
           // to store instances of impactSummaryReport for later use
@@ -3209,6 +3302,7 @@ define([
           this.own(on(impactSummaryReportObj, "printDataUpdated",
             lang.hitch(this, function (details) {
               this._printData[details.id].info = details.printData;
+              this._printData[details.id].sortInfo = details.sortInfo;
             })));
           this.own(on(impactSummaryReportObj, "showMessage", lang.hitch(this, function (msg) {
             this._showMessage(msg);
@@ -4369,6 +4463,87 @@ define([
         }
       } else {
         return rows;
+      }
+    },
+
+    /**
+     * This function is used to get selected fields by layer id
+     */
+    _getSelectedFieldsByLayerId: function (currentLayerId) {
+      var selectedFields;
+      //check id the currentLayerId is found in shapeFile 
+      if (this._newShapeFileAnalysisArr && this._newShapeFileAnalysisArr.length > 0) {
+        array.some(this._newShapeFileAnalysisArr, lang.hitch(this, function (list) {
+          if (list.id === currentLayerId) {
+            selectedFields = list.configuredField;
+            return true;
+          }
+        }));
+      }
+      //if selectedFields are empty it means currentLayerId is of some layer and not shapefile
+      if (!selectedFields) {
+        array.some(this._impactSummaryReportObjList, lang.hitch(this, function (list) {
+          if (list.id === currentLayerId) {
+            selectedFields = list.configuredField;
+            return true;
+          }
+        }));
+      }
+      return selectedFields;
+    },
+
+    /**
+     * This function is used to get selected sort field type
+     */
+    _getFieldType: function (id, printInfo) {
+      var selectedSortFieldText = printInfo.sortInfo.sortingField;
+      var currentFieldObj, currentFieldText, fieldType = "esriFieldTypeString", format, selectedFields;
+      //for Count/TotalLength/TotalArea return Integer as field type
+      if (selectedSortFieldText === 'esriCTCountField' ||
+        selectedSortFieldText === 'esriCTTotalLengthField' ||
+        selectedSortFieldText === 'esriCTTotalAreaField') {
+        return "esriFieldTypeInteger";
+      }
+      selectedFields = this._getSelectedFieldsByLayerId(id);
+      for (var fieldName in selectedFields) {
+        currentFieldObj = selectedFields[fieldName];
+        currentFieldText = this._getFieldText(currentFieldObj, fieldName);
+        if (currentFieldText === selectedSortFieldText) {
+          if (currentFieldObj.type) {
+            fieldType = currentFieldObj.type;
+          } else if (currentFieldObj.format) {
+            format = currentFieldObj.format;
+            if (format.hasOwnProperty("dateFormat")) {
+              fieldType = "esriFieldTypeDate";
+            }
+            if (format.hasOwnProperty("digitSeparator") || format.hasOwnProperty("places")) {
+              fieldType = "esriFieldTypeInteger";
+            }
+          } else if (currentFieldObj.hasOwnProperty("returnType")) {
+            if (currentFieldObj.returnType === "number") {
+              fieldType = "esriFieldTypeInteger";
+            } if (currentFieldObj.returnType === "string") {
+              fieldType = "esriFieldTypeString";
+            }
+          } else {
+            fieldType = "esriFieldTypeString";
+          }
+        }
+      }
+      return fieldType;
+    },
+
+    /**
+     * This function is used to get the field text
+     * @memberOf Screening/impactSummaryReport/impactSummaryReport
+     */
+    _getFieldText: function (currentFieldObj, fieldName) {
+      if (currentFieldObj.label) {
+        return currentFieldObj.label;
+      } else if (currentFieldObj.alias) {
+        return currentFieldObj.alias;
+      } else {
+        return fieldName;
       }
     }
   });

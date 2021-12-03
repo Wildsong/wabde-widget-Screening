@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Информация о пересекаемом объекте",
     "valueAriaLabel": "Значение",
     "countAriaLabel": "Число",
-    "layerNameWithFeatureCount": "Слой ${layerName} с пересекающимися объектами ${featureCount}"
+    "layerNameWithFeatureCount": "Слой ${layerName} с пересекающимися объектами ${featureCount}",
+    "sortingSettingsLegend": "Параметры сортировки",
+    "ascendingLabel": "По возрастанию",
+    "descendingLabel": "По убыванию",
+    "sortFieldSelectLabel": "Выбрать поле сортировки",
+    "errorLabel": "Сервер обнаружил временную ошибку и не смог выполнить запрос.",
+    "statisticsCountLabel": "Статистика: Количество",
+    "statisticsTotalLengthLabel": "Статистика: Общая длина",
+    "statisticsTotalAreaLabel": "Статистика: Общая площадь",
+    "timedOutErrorLabel": "Время ожидания сервера истекло",
+    "sortHint": "Подсказка: Выбранные поля сортируются только в том случае, если количество объектов/групп превышает 1."
   }
 });

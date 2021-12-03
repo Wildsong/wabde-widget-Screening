@@ -36,6 +36,7 @@ define({
       allowGroupingLabel: "Group features by field with same value",
       groupingHintDescription: "Hint: By default, all features with the same value for the selected fields will be grouped to appear as a single entry in the report. Disable grouping by like attributes to display an entry for each feature instead.",
       addLayersHintText: "Hint: Choose the layers and fields to include in the analysis and report", // shown as hint text in config UI for Add layers section.
+      queryCapabilityHintText: "Only layers with query capabilities will be listed", // shown as hint text in config UI for Add layers section.
       addLayerNameTitle: "Layer Name", // shown as title in config UI for add layer Name in Add Layer section.
       addFieldsLabel: "Add Field", // shown as label in config UI for button add field for Add Fields section.
       addFieldsPopupTitle: "Select Fields", // shown as title in config UI for add Fields Popup title in Add Fields section.
@@ -72,7 +73,14 @@ define({
       drawToolPolygonLabel: "Polygon",
       drawToolCircleLabel: "Circle",
       selectDrawToolsText: "Choose the drawing tools available for creating the area of interest",
-      selectingDrawToolErrorMessage: "Choose at least one drawing tool or selection layer to use the Draw Tools option for AOI Tools."
+      selectingDrawToolErrorMessage: "Choose at least one drawing tool or selection layer to use the Draw Tools option for AOI Tools.",
+      sortingSettingsLegend: "Sort Settings",
+      ascendingLabel: "Ascending",
+      descendingLabel: "Descending",
+      sortFieldSelectLabel: "Select sort field",
+      statisticsCountLabel: "Statistics: Count",
+      statisticsTotalLengthLabel: "Statistics: Total Length",
+      statisticsTotalAreaLabel: "Statistics: Total Area"
     },
     downloadTab: {
       downloadLegend: "Download Settings", // Shown as fieldset legend for download settings

@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "교차된 피처 세부정보",
     "valueAriaLabel": "값",
     "countAriaLabel": "개수",
-    "layerNameWithFeatureCount": "${featureCount}개의 교차 피처가 있는 ${layerName} 레이어"
+    "layerNameWithFeatureCount": "${featureCount}개의 교차 피처가 있는 ${layerName} 레이어",
+    "sortingSettingsLegend": "정렬 설정",
+    "ascendingLabel": "오름차순",
+    "descendingLabel": "내림차순",
+    "sortFieldSelectLabel": "정렬 필드 선택",
+    "errorLabel": "서버에 일시적인 오류가 발생하여 쿼리를 완료할 수 없습니다.",
+    "statisticsCountLabel": "통계: 개수",
+    "statisticsTotalLengthLabel": "통계: 총 길이",
+    "statisticsTotalAreaLabel": "통계: 총 면적",
+    "timedOutErrorLabel": "서버 시간 초과",
+    "sortHint": "힌트: 선택한 필드는 피처/그룹의 수가 둘 이상인 경우에만 정렬됩니다."
   }
 });

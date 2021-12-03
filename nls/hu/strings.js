@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Metszett vektoroselem-adatok",
     "valueAriaLabel": "Érték",
     "countAriaLabel": "Darabszám",
-    "layerNameWithFeatureCount": "${layerName} réteg ${featureCount} metsző vektoros elemmel"
+    "layerNameWithFeatureCount": "${layerName} réteg ${featureCount} metsző vektoros elemmel",
+    "sortingSettingsLegend": "Rendezés beállításai",
+    "ascendingLabel": "Növekvő",
+    "descendingLabel": "Csökkenő",
+    "sortFieldSelectLabel": "Rendezési mező kiválasztása",
+    "errorLabel": "A kiszolgáló átmeneti hibát észlelt, és nem tudta befejezni a lekérdezést.",
+    "statisticsCountLabel": "Statisztika: Számlálás",
+    "statisticsTotalLengthLabel": "Statisztika: Teljes hossz",
+    "statisticsTotalAreaLabel": "Statisztika: Teljes terület",
+    "timedOutErrorLabel": "Kiszolgáló időtúllépése",
+    "sortHint": "Tipp: A kiválasztott mezők csak akkor kerülnek rendezésre, ha a vektoros elemek/csoportok száma 1-nél több."
   }
 });

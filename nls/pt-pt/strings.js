@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -140,6 +140,16 @@ define({
     "intersectedFeatureLabel": "Detalhe do elemento de interseção",
     "valueAriaLabel": "Valor",
     "countAriaLabel": "Contagem",
-    "layerNameWithFeatureCount": "${layerName} camada com ${featureCount} elementos de interseção"
+    "layerNameWithFeatureCount": "${layerName} camada com ${featureCount} elementos de interseção",
+    "sortingSettingsLegend": "Ordenar Definições",
+    "ascendingLabel": "Ascendente",
+    "descendingLabel": "Decrescente",
+    "sortFieldSelectLabel": "Selecionar campo de ordenação",
+    "errorLabel": "O servidor encontrou um erro temporário e não pôde concluir a consulta.",
+    "statisticsCountLabel": "Estatísticas: Contagem",
+    "statisticsTotalLengthLabel": "Estatísticas: Comprimento Total",
+    "statisticsTotalAreaLabel": "Estatísticas: Área Total",
+    "timedOutErrorLabel": "O servidor expirou",
+    "sortHint": "Sugestão: os campos selecionados são ordenados apenas quando o número de elementos/grupos é superior a 1."
   }
 });

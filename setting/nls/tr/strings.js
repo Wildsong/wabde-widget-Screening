@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Aynı değere sahip alana göre detayları grupla",
     "groupingHintDescription": "İpucu: Varsayılan olarak, seçilen alanlar için aynı değere sahip tüm detaylar raporda tek bir giriş olarak görünecek şekilde gruplandırılır. Bunun yerine, her detay için bir giriş görüntülemek amacıyla benzer özniteliklere göre gruplamayı devre dışı bırakın.",
     "addLayersHintText": "İpucu: Analize ve rapora eklenecek katmanları ve alanları seçin",
+    "queryCapabilityHintText": "Sadece sorgu yeteneklerine sahip olan katmanlar listelenecektir",
     "addLayerNameTitle": "Katman Adı",
     "addFieldsLabel": "Alan Ekle",
     "addFieldsPopupTitle": "Alanları Seç",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Çokgen",
     "drawToolCircleLabel": "Daire",
     "selectDrawToolsText": "İlgi alanını oluşturmak için kullanılabilecek çizim araçlarını seçin.",
-    "selectingDrawToolErrorMessage": "AOI (İlgi Alanı) Araçları için Çizim Araçları seçeneğini kullanmak üzere en az bir çizim aracı veya seçim katmanı seçin."
+    "selectingDrawToolErrorMessage": "AOI (İlgi Alanı) Araçları için Çizim Araçları seçeneğini kullanmak üzere en az bir çizim aracı veya seçim katmanı seçin.",
+    "sortingSettingsLegend": "Sıralama Ayarları",
+    "ascendingLabel": "Artan",
+    "descendingLabel": "Azalan",
+    "sortFieldSelectLabel": "Sıralama alanını seç",
+    "statisticsCountLabel": "İstatistikler: Sayım",
+    "statisticsTotalLengthLabel": "İstatistikler: Toplam Uzunluk",
+    "statisticsTotalAreaLabel": "İstatistikler: Toplam Alan"
   },
   "downloadTab": {
     "downloadLegend": "İndirme Ayarları",

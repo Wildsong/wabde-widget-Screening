@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "קבץ ישויות לפי שדה עם אותו ערך",
     "groupingHintDescription": "עצה: כברירת מחדל, כל הישויות עם אותו ערך עבור השדות שנבחרו יקובצו כדי להיראות כרשומה אחת בדוח. השבת קיבוץ לפי מאפיינים דומים כדי להציג רשומה עבור כל ישות במקום זאת.",
     "addLayersHintText": "רמז: בחר את השכבות והשדות שייכללו בניתוח ובדוח",
+    "queryCapabilityHintText": "יפורטו רק שכבות עם יכולות שאילתה",
     "addLayerNameTitle": "שם שכבה",
     "addFieldsLabel": "הוסף שדה",
     "addFieldsPopupTitle": "בחר שדות",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "פוליגון",
     "drawToolCircleLabel": "מעגל",
     "selectDrawToolsText": "בחר את כלי השרטוט הזמינים ליצירת אזור עניין ותן להם תוויות",
-    "selectingDrawToolErrorMessage": "בחר לפחות כלי שרטוט אחד או שכבת בחירה כדי להשתמש באפשרות כלי השרטוט עבור כלי AOI."
+    "selectingDrawToolErrorMessage": "בחר לפחות כלי שרטוט אחד או שכבת בחירה כדי להשתמש באפשרות כלי השרטוט עבור כלי AOI.",
+    "sortingSettingsLegend": "הגדרות מיון",
+    "ascendingLabel": "עולה",
+    "descendingLabel": "יורד",
+    "sortFieldSelectLabel": "בחר שדה למיון",
+    "statisticsCountLabel": "סטטיסטיקה: ספירה",
+    "statisticsTotalLengthLabel": "סטטיסטיקה: אורך כולל",
+    "statisticsTotalAreaLabel": "סטטיסטיקה: שטח כולל"
   },
   "downloadTab": {
     "downloadLegend": "הורדת הגדרות",

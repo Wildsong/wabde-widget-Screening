@@ -127,6 +127,9 @@ define([
     _layerDefinition: null, //to store the layers definition to support dijit function to handle subtypes and domains
     _isFieldsSelectorClick: false, // to track whether fields selector icon is clicked or not
     _selectedFields: [], // to store the latest selected fields by user
+    sortFieldIndex: null,
+    isTimeoutOccurred: false,
+    sortFieldType: null,
 
     constructor: function (options) {
       this._feetUnitData = [];
@@ -163,6 +166,9 @@ define([
       this._layerDefinition = null;
       this._isFieldsSelectorClick = false;
       this._selectedFields = [];
+      this.sortFieldIndex = null;
+      this.isTimeoutOccurred = false;
+      this.sortFieldType = null;
       lang.mixin(this, options);
     },
 
@@ -176,6 +182,8 @@ define([
         evt.preventDefault();
         if (this.isExceedingMaxRecordCount) {
           this.emit("showMessage", this.nls.reportsTab.unableToAnalyzeText);
+        } else if (this.isTimeoutOccurred) {
+          this.emit("showMessage", this.nls.reportsTab.errorLabel);
         } else {
           this.emit("showMessage", this.nls.reportsTab.layerNotVisibleText);
         }
@@ -194,6 +202,7 @@ define([
       domClass.add(this.impactSummaryLayerFeatureCount, "esriCTHidden");
       domClass.remove(this.layerTitleAndFieldParentContainer, "esriCTLayerSectionDisabled");
       domAttr.set(this.impactSummaryLayerMaxRecordHint, "title", this.nls.reportsTab.layerNotVisibleText);
+      domAttr.set(this.impactSummaryLayerMaxRecordHint, "aria-label", this.nls.reportsTab.layerNotVisibleText);
       domClass.remove(this.impactSummaryLayerMaxRecordHint, "esriCTHidden");
       domClass.add(this.impactSummaryLayerTitle, "esriCTLayerTitleOverrideWidth");
       this._showMessage(this.nls.reportsTab.layerNotVisibleText);
@@ -371,6 +380,7 @@ define([
       reportLayerDetails.printInfo.hectaresUnitInfo = this._hectaresUnitInfo;
       reportLayerDetails.printInfo.geometryType = this.featureLayer.geometryType;
       reportLayerDetails.printInfo.groupbyfieldCheckBoxStatus = this.groupbyfieldCheckBoxStatus;
+      reportLayerDetails.printInfo.sortInfo = this.sortInfo;
       return reportLayerDetails;
     },
 
@@ -396,7 +406,7 @@ define([
         layerAriaLabel = string.substitute(this.nls.reportsTab.layerNameWithFeatureCount, {
           layerName: this.configuredLayerLabel,
           featureCount: updatedCount
-        })
+        });
       }
       domAttr.set(this.impactSummaryLayerTitle, "innerHTML", jimuUtils.sanitizeHTML(this.configuredLayerLabel));
       domAttr.set(this.impactSummaryLayerTitle, "title", jimuUtils.sanitizeHTML(this.configuredLayerLabel));
@@ -433,38 +443,26 @@ define([
      */
     _createFieldSelectorPopupWidget: function () {
       this._isFieldsSelectorClick = true;
-      if (!this._fieldSelectorWidget) {
-        this._fieldSelectorWidget = new fieldSelectorPopup({
-          outFields: this.configuredField,
-          popupTitle: this.configuredLayerLabel,
-          fieldTitle: this.nls.reportsTab.selectReportFieldTitle,
-          nls: this.nls,
-          appConfig: this.appConfig,
-          retainSelectedFieldsArr: this.retainSelectedFieldsArr
-        });
-        on(this._fieldSelectorWidget, "onFieldSelectComplete", lang.hitch(this,
-          function (selectedFields) {
-            this._selectedFields = selectedFields;
-            this._filterFieldsForReport(selectedFields);
-          }));
-        on(this._fieldSelectorWidget, "onCancel", lang.hitch(this, function () {
-          if (this.retainSelectedFieldsArr !== null) {
-            this._selectedFields = this.retainSelectedFieldsArr;
-          } else {
-            this._selectedFields = this._getAllFields();
-          }
+      this._fieldSelectorWidget = new fieldSelectorPopup({
+        outFields: this.configuredField,
+        popupTitle: this.configuredLayerLabel,
+        fieldTitle: this.nls.reportsTab.selectReportFieldTitle,
+        nls: this.nls,
+        appConfig: this.appConfig,
+        retainSelectedFieldsArr: this._fieldSelectorWidget ? this._selectedFields : this.retainSelectedFieldsArr,
+        featureLayer: this.featureLayer,
+        sortInfo: this.sortInfo
+      });
+      this._fieldSelectorWidget.startup();
+      on(this._fieldSelectorWidget, "onFieldSelectComplete", lang.hitch(this,
+        function (updatedSettings) {
+          this._selectedFields = updatedSettings.selectedFields;
+          this.sortInfo = updatedSettings.sortInfo;
+          this._filterFieldsForReport(this._selectedFields);
         }));
-        on(this._fieldSelectorWidget, "onClose", lang.hitch(this, function () {
-          if (this.retainSelectedFieldsArr !== null) {
-            this._selectedFields = this.retainSelectedFieldsArr;
-          } else {
-            this._selectedFields = this._getAllFields();
-          }
-        }));
-        this._fieldSelectorWidget.startup();
-      } else {
-        this._fieldSelectorWidget.onFieldsSelectorClick();
-      }
+      on(this._fieldSelectorWidget, "onCancel", lang.hitch(this, function (previousSettings) {
+        this._selectedFields = previousSettings;
+      }));
       // Dart Theme change
       if (this.appConfig.theme.name === "DartTheme") {
         domClass.add(this._fieldSelectorWidget.fieldsPopup.domNode, "esriCTDartPanel");
@@ -499,27 +497,34 @@ define([
       // enable field selector
       if (!domClass.contains(this.impactSummaryLayerField,
         "esriCTImpactSummaryLayerFieldIconDisabled")) {
-        if (this._isFieldsSelectorClick && this._selectedFields.length > 0) {
+        if (this._isFieldsSelectorClick && this._selectedFields !== null &&
+          this._selectedFields.length > 0) {
           return this._selectedFields;
-        } else if (this._isFieldsSelectorClick && this._selectedFields.length === 0) {
+        } else if (this._isFieldsSelectorClick && this._selectedFields !== null &&
+          this._selectedFields.length === 0) {
           return [];
-        } else if ((!this._isFieldsSelectorClick) && this._selectedFields.length > 0) {
+        } else if ((!this._isFieldsSelectorClick) && this._selectedFields !== null &&
+          this._selectedFields.length > 0) {
           return this._selectedFields;
-        } else if ((!this._isFieldsSelectorClick) && this._selectedFields.length === 0 &&
+        } else if ((!this._isFieldsSelectorClick) && this._selectedFields !== null &&
+          this._selectedFields.length === 0 &&
           this.retainSelectedFieldsArr === null) {
           return this._getAllFields();
-        } else if ((!this._isFieldsSelectorClick) && this._selectedFields.length === 0 &&
+        } else if ((!this._isFieldsSelectorClick) && this._selectedFields !== null &&
+          this._selectedFields.length === 0 &&
           this.retainSelectedFieldsArr.length === 0) {
           return [];
         } else {
           return this._getAllFields();
         }
       } else { // disable field selector
-        if (this._selectedFields.length > 0) {
+        if (this._selectedFields !== null && this._selectedFields.length > 0) {
           return this._selectedFields;
-        } else if (this._selectedFields.length === 0 && this.retainSelectedFieldsArr === null) {
+        } else if (this._selectedFields !== null && this._selectedFields.length === 0 &&
+          this.retainSelectedFieldsArr === null) {
           return this._getAllFields();
-        } else if (this._selectedFields.length === 0 && this.retainSelectedFieldsArr.length === 0) {
+        } else if (this._selectedFields !== null && this._selectedFields.length === 0 &&
+          this.retainSelectedFieldsArr.length === 0) {
           return [];
         } else {
           return this._getAllFields();
@@ -552,7 +557,8 @@ define([
       this._showReport();
       this.emit("printDataUpdated", {
         "id": this.id,
-        "printData": this._printData
+        "printData": this._printData,
+        "sortInfo": this.sortInfo
       });
     },
 
@@ -623,7 +629,18 @@ define([
               }
               deferred.resolve(objectIDArr);
             }
-          }), lang.hitch(this, function () {
+          }), lang.hitch(this, function (error) {
+            this.isTimeoutOccurred = true;
+            var errorMessage = '';
+            if (error && error.message) {
+              errorMessage = error.message;
+            }
+            domClass.remove(this.impactSummaryLayerMaxRecordHint, "esriCTHidden");
+            domAttr.set(this.impactSummaryLayerMaxRecordHint, "title",
+              this.nls.reportsTab.timedOutErrorLabel);
+            domAttr.set(this.impactSummaryLayerMaxRecordHint, "aria-label",
+              this.nls.reportsTab.timedOutErrorLabel);
+            domClass.add(this.impactSummaryLayerTitle, "esriCTLayerTitleOverrideWidth");
             deferred.resolve([]);
           }));
         }
@@ -652,12 +669,23 @@ define([
         }
       }
       all(deferredList).then(lang.hitch(this, function (featuresArr) {
+        var anyTimeoutResults = false;
         var intersectingFeatures;
         intersectingFeatures = [];
         array.forEach(featuresArr, lang.hitch(this, function (features) {
-          intersectingFeatures = intersectingFeatures.concat(features);
+          if (features !== null) {
+            intersectingFeatures = intersectingFeatures.concat(features);
+          } else {
+            //response timed out for some feature chunks
+            anyTimeoutResults = true;
+          }
         }));
-        deferred.resolve(intersectingFeatures);
+        if (anyTimeoutResults) {
+          //if some feature chunks failed, intersecting features will be zero
+          deferred.resolve([]);
+        } else {
+          deferred.resolve(intersectingFeatures);
+        }
       }));
       return deferred.promise;
     },
@@ -700,8 +728,19 @@ define([
           } else {
             deferred.resolve([]);
           }
-        }), lang.hitch(this, function () {
-          deferred.resolve([]);
+        }), lang.hitch(this, function (error) {
+          this.isTimeoutOccurred = true;
+          var errorMessage = '';
+          if (error && error.message) {
+            errorMessage = error.message;
+          }
+          domClass.remove(this.impactSummaryLayerMaxRecordHint, "esriCTHidden");
+          domAttr.set(this.impactSummaryLayerMaxRecordHint, "title",
+            this.nls.reportsTab.timedOutErrorLabel);
+          domAttr.set(this.impactSummaryLayerMaxRecordHint, "aria-label",
+            this.nls.reportsTab.timedOutErrorLabel);
+          domClass.add(this.impactSummaryLayerTitle, "esriCTLayerTitleOverrideWidth");
+          deferred.resolve(null);
         }));
       }
       return deferred.promise;
@@ -1390,17 +1429,20 @@ define([
             if (this.featureLayer.geometryType === "esriGeometryPolyline") {
               matchedGeometries.push({
                 "features": this._getAggregatedFeatures(aggregatedObj[aggregatedId]),
-                "sortValue": kilometersInfo
+                "sortValue": this.sortInfo.sortingField === "esriCTTotalLengthField" ? kilometersInfo :
+                  this._getAggregatedFeatures(aggregatedObj[aggregatedId])[0].attributes[this._getSortFieldName()]
               });
             } else if (this.featureLayer.geometryType === "esriGeometryPolygon") {
               matchedGeometries.push({
                 "features": this._getAggregatedFeatures(aggregatedObj[aggregatedId]),
-                "sortValue": hectorsInfo
+                "sortValue": this.sortInfo.sortingField === "esriCTTotalAreaField" ? hectorsInfo :
+                  this._getAggregatedFeatures(aggregatedObj[aggregatedId])[0].attributes[this._getSortFieldName()]
               });
             } else if (this.featureLayer.geometryType === "esriGeometryPoint") {
               matchedGeometries.push({
                 "features": this._getAggregatedFeatures(aggregatedObj[aggregatedId]),
-                "sortValue": countUnitInfo
+                "sortValue": this.sortInfo.sortingField === "esriCTCountField" ? countUnitInfo :
+                  this._getAggregatedFeatures(aggregatedObj[aggregatedId])[0].attributes[this._getSortFieldName()]
               });
             }
           }
@@ -1426,14 +1468,45 @@ define([
      * @memberOf Screening/impactSummaryReport/impactSummaryReport
      */
     _sortFeatureArray: function (a, b) {
-      var lastIndex = a.length - 1;
-      if (a[lastIndex] < b[lastIndex]) {
-        return 1;
+      //user number sorting for following dataTypes
+      var numberCompare = ["esriFieldTypeOID", "esriFieldTypeSmallInteger",
+        "esriFieldTypeInteger", "esriFieldTypeSingle", "esriFieldTypeDouble", "esriFieldTypeDate"];
+
+      //get the value to be sorted based on the selected sort field index
+      var _a = a[this.sortFieldIndex];
+      var _b = b[this.sortFieldIndex];
+
+      //If NoData or NA text is in the values consider it as empty
+      if (_a === "<i>" + this.nls.reportsTab.noDataText + "</i>" ||
+        _a === "<i>" + this.nls.reportsTab.notApplicableText + "</i>") {
+        _a = "";
       }
-      if (a[lastIndex] > b[lastIndex]) {
-        return -1;
+      if (_b === "<i>" + this.nls.reportsTab.noDataText + "</i>" ||
+        _a === "<i>" + this.nls.reportsTab.notApplicableText + "</i>") {
+        _b = "";
       }
-      return 0;
+
+      //if the value is empty/undefined/null based on sort order move the empty record always at the bottom
+      if (typeof (_a) === 'undefined' || _a === null || _a === "") {
+        return this.sortInfo.sortOrder === "Desc" ? -1 : 1;
+      } else if (typeof (_b) === 'undefined' || _b === null || _b === "") {
+        return this.sortInfo.sortOrder === "Desc" ? 1 : -1;
+      } else if (_a === _b) {
+        return 0;
+      }
+
+      //if the current sort field type is date get the epoch time for sorting
+      if (this.sortFieldType === "esriFieldTypeDate") {
+        _a = new Date(_a).getTime();
+        _b = new Date(_b).getTime();
+      }
+
+      //if the current sort field type is number parse the number to remove the locale char(e.g. comma, space etc)
+      if (numberCompare.indexOf(this.sortFieldType) !== -1) {
+        return jimuUtils.parseNumber(_a) - jimuUtils.parseNumber(_b);
+      } else {
+        return _a.toString().localeCompare(_b.toString());
+      }
     },
 
     /**
@@ -1441,13 +1514,45 @@ define([
      * @memberOf Screening/impactSummaryReport/impactSummaryReport
      */
     _sortArrayByKey: function (a, b) {
-      if (a.sortValue < b.sortValue) {
-        return 1;
+      //user number sorting for following dataTypes
+      var numberCompare = ["esriFieldTypeOID", "esriFieldTypeSmallInteger",
+        "esriFieldTypeInteger", "esriFieldTypeSingle", "esriFieldTypeDouble", "esriFieldTypeDate"];
+
+      //get the value to be sorted from the sortValue key in objects
+      var _a = a.sortValue;
+      var _b = b.sortValue;
+
+      //If NoData or NA text is in the values consider it as empty
+      if (_a === this.nls.reportsTab.noDataText ||
+        _a === this.nls.reportsTab.notApplicableText) {
+        _a = "";
       }
-      if (a.sortValue > b.sortValue) {
-        return -1;
+      if (_b === this.nls.reportsTab.noDataText ||
+        _a === this.nls.reportsTab.notApplicableText) {
+        _b = "";
       }
-      return 0;
+
+      //if the value is empty/undefined/null based on sort order move the empty record always at the bottom
+      if (typeof (_a) === 'undefined' || _a === null || _a === "") {
+        return this.sortInfo.sortOrder === "Desc" ? -1 : 1;
+      } else if (typeof (_b) === 'undefined' || _b === null || _b === "") {
+        return this.sortInfo.sortOrder === "Desc" ? 1 : -1;
+      } else if (_a === _b) {
+        return 0;
+      }
+
+      //if the current sort field type is date get the epoch time for sorting
+      if (this.sortFieldType === "esriFieldTypeDate") {
+        _a = new Date(_a).getTime();
+        _b = new Date(_b).getTime();
+      }
+
+      //if the current sort field type is number parse the number to remove the locale char(e.g. comma, space etc)
+      if (numberCompare.indexOf(this.sortFieldType) !== -1) {
+        return jimuUtils.parseNumber(_a) - jimuUtils.parseNumber(_b);
+      } else {
+        return _a.toString().localeCompare(_b.toString());
+      }
     },
 
     /**
@@ -1493,10 +1598,24 @@ define([
     _renderReport: function (aggregatedData, intersectingFeaturesArr) {
       //loop through all the rows and create table for each unique set
       if (aggregatedData.rows && aggregatedData.rows.length > 0) {
+        //statistics fields will always be at the end of the column array
+        var statisticsFieldsArr = ["esriCTCountField", "esriCTTotalLengthField", "esriCTTotalAreaField"];
+        if (statisticsFieldsArr.indexOf(this.sortInfo.sortingField) !== -1) {
+          this.sortFieldIndex = aggregatedData.cols.length - 1;
+        } else {
+          this.sortFieldIndex = aggregatedData.cols.indexOf(this.sortInfo.sortingField);
+        }
+        this.sortFieldType = this._getFieldType(this.sortInfo.sortingField);
         //sort data so that rows for which measurement are not to be shown will be shifted top
-        aggregatedData.rows = aggregatedData.rows.sort(this._sortFeatureArray);
+        aggregatedData.rows = aggregatedData.rows.sort(lang.hitch(this, this._sortFeatureArray));
+        if (this.sortInfo.sortOrder === "Desc") {
+          aggregatedData.rows.reverse();
+        }
         //as data is sorted we also need to sort the features accordingly
-        intersectingFeaturesArr = intersectingFeaturesArr.sort(this._sortArrayByKey);
+        intersectingFeaturesArr = intersectingFeaturesArr.sort(lang.hitch(this, this._sortArrayByKey));
+        if (this.sortInfo.sortOrder === "Desc") {
+          intersectingFeaturesArr.reverse();
+        }
         // once after sorting set the features in _aggregatedFeatureGeometries array
         this._aggregatedFeatureGeometries = intersectingFeaturesArr;
         array.forEach(aggregatedData.rows, lang.hitch(this, function (eachRow, index) {
@@ -1733,6 +1852,8 @@ define([
           Event.stop(evt);
           if (this.isExceedingMaxRecordCount) {
             this.emit("showMessage", this.nls.reportsTab.unableToAnalyzeText);
+          } else if (this.isTimeoutOccurred) {
+            this.emit("showMessage", this.nls.reportsTab.errorLabel);
           } else {
             this.emit("showMessage", this.nls.reportsTab.layerNotVisibleText);
           }
@@ -1983,6 +2104,60 @@ define([
         def.resolve(resolvedExpression);
       }
       return def.promise;
+    },
+
+    /**
+     * This function is used to get selected sort field type
+     */
+    _getFieldType: function (selectedSortFieldText) {
+      var currentFieldObj, currentFieldText, fieldType = "esriFieldTypeString", format;
+      //for Count/TotalLength/TotalArea return Integer as field type
+      if (selectedSortFieldText === 'esriCTCountField' ||
+        selectedSortFieldText === 'esriCTTotalLengthField' ||
+        selectedSortFieldText === 'esriCTTotalAreaField') {
+        return "esriFieldTypeInteger";
+      }
+      for (var fieldName in this.configuredField) {
+        currentFieldObj = this.configuredField[fieldName];
+        currentFieldText = this._getFieldText(currentFieldObj, fieldName);
+        if (currentFieldText === selectedSortFieldText) {
+          if (currentFieldObj.type) {
+            fieldType = currentFieldObj.type;
+          } else if (currentFieldObj.format) {
+            format = currentFieldObj.format;
+            if (format.hasOwnProperty("dateFormat")) {
+              fieldType = "esriFieldTypeDate";
+            }
+            if (format.hasOwnProperty("digitSeparator") || format.hasOwnProperty("places")) {
+              fieldType = "esriFieldTypeInteger";
+            }
+          } else if (currentFieldObj.hasOwnProperty("returnType")) {
+            if (currentFieldObj.returnType === "number") {
+              fieldType = "esriFieldTypeInteger";
+            } if (currentFieldObj.returnType === "string") {
+              fieldType = "esriFieldTypeString";
+            }
+          } else {
+            fieldType = "esriFieldTypeString";
+          }
+        }
+      }
+      return fieldType;
+    },
+
+    /**
+     * This function is used to get selected sort field name
+     */
+    _getSortFieldName: function () {
+      var fName, currentFieldObj, currentFieldText;
+      for (var fieldName in this.configuredField) {
+        currentFieldObj = this.configuredField[fieldName];
+        currentFieldText = this._getFieldText(currentFieldObj, fieldName);
+        if (currentFieldText === this.sortInfo.sortingField) {
+          fName = fieldName;
+        }
+      }
+      return fName;
     }
   });
 });

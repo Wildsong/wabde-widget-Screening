@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Đối tượng của nhóm theo trường có cùng giá trị",
     "groupingHintDescription": "Gợi ý: Theo mặc định, tất cả các đối tượng có cùng giá trị cho các trường đã chọn sẽ được nhóm lại để trở thành một mục nhập duy nhất trong báo cáo. Thay vào đó, vô hiệu hóa nhóm bằng các thuộc tính tương tự để hiển thị một mục nhập cho từng đối tượng.",
     "addLayersHintText": "Gợi ý: Chọn các lớp và trường để đưa vào phân tích và báo cáo",
+    "queryCapabilityHintText": "Chỉ liệt kê các lớp có khả năng truy vấn",
     "addLayerNameTitle": "Tên lớp",
     "addFieldsLabel": "Thêm Trường",
     "addFieldsPopupTitle": "Chọn Trường",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Vùng",
     "drawToolCircleLabel": "Hình tròn",
     "selectDrawToolsText": "Chọn các công cụ vẽ có sẵn để tạo khu vực quan tâm.",
-    "selectingDrawToolErrorMessage": "Chọn ít nhất một công cụ vẽ hoặc lớp chọn để sử dụng tùy chọn Công cụ Vẽ cho Công cụ AOI."
+    "selectingDrawToolErrorMessage": "Chọn ít nhất một công cụ vẽ hoặc lớp chọn để sử dụng tùy chọn Công cụ Vẽ cho Công cụ AOI.",
+    "sortingSettingsLegend": "Thiết lập Sắp xếp",
+    "ascendingLabel": "Tăng dần",
+    "descendingLabel": "Giảm dần",
+    "sortFieldSelectLabel": "Chọn trường sắp xếp",
+    "statisticsCountLabel": "Thống kê: Số lượng",
+    "statisticsTotalLengthLabel": "Thống kê: Tổng Chiều dài",
+    "statisticsTotalAreaLabel": "Thống kê: Tổng Diện tích"
   },
   "downloadTab": {
     "downloadLegend": "Thiết lập tải về",

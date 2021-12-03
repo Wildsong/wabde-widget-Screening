@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Zoskupiť prvky podľa stĺpca s rovnakou hodnotou",
     "groupingHintDescription": "Tip: Predvolene sú všetky prvky s rovnakou hodnotou pre zvolené stĺpce zoskupené, aby vyzerali ako jediný vstup v správe. Deaktivovať zoskupenie podľa podobných atribútov na zobrazenie vstupu pre každý prvok.",
     "addLayersHintText": "Tip: Vybrať vrstvy a stĺpce na zahrnutie v analýze a správe",
+    "queryCapabilityHintText": "V zozname budú uvedené iba vrstvy s možnosťami dotazov",
     "addLayerNameTitle": "Názov vrstvy",
     "addFieldsLabel": "Pridať stĺpec",
     "addFieldsPopupTitle": "Zvoliť stĺpce",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Polygón",
     "drawToolCircleLabel": "Kruh",
     "selectDrawToolsText": "Vyberte nástroje kreslenia dostupné pre vytvorenie oblasti záujmu",
-    "selectingDrawToolErrorMessage": "Vyberte aspoň jeden nástroj kreslenia alebo vrstvu výberu na použitie možnosti nástrojov kreslenia pre AOI nástroje."
+    "selectingDrawToolErrorMessage": "Vyberte aspoň jeden nástroj kreslenia alebo vrstvu výberu na použitie možnosti nástrojov kreslenia pre AOI nástroje.",
+    "sortingSettingsLegend": "Nastavenia triedenia",
+    "ascendingLabel": "Vzostupne",
+    "descendingLabel": "Zostupne",
+    "sortFieldSelectLabel": "Vyberte pole triedenia",
+    "statisticsCountLabel": "Štatistika: Počet",
+    "statisticsTotalLengthLabel": "Štatistika: Celková dĺžka",
+    "statisticsTotalAreaLabel": "Štatistika: Celková plocha"
   },
   "downloadTab": {
     "downloadLegend": "Stiahnuť nastavenia",

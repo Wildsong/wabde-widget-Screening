@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Kelompokkan fitur berdasarkan kolom dengan nilai yang sama",
     "groupingHintDescription": "Petunjuk: Secara default, semua fitur dengan nilai yang sama untuk kolom yang dipilih akan dikelompokkan untuk muncul sebagai entri tunggl dalam laporan. Nonaktifkan pengelompokan berdasarkan atribut suka untuk menampilkan entri untuk setiap fitur.",
     "addLayersHintText": "Petunjuk: Pilih layer dan kolom untuk disertakan dalam analisis dan laporan",
+    "queryCapabilityHintText": "Hanya layer dengan kapabilitas kueri yang akan tercantum",
     "addLayerNameTitle": "Nama Layer",
     "addFieldsLabel": "Tambahkan Kolom",
     "addFieldsPopupTitle": "Pilih Kolom",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Poligon",
     "drawToolCircleLabel": "Lingkaran",
     "selectDrawToolsText": "Pilih alat menggambar yang tersedia untuk membuat fokus area",
-    "selectingDrawToolErrorMessage": "Pilih setidaknya satu alat menggambar atau layer pilihan untuk menggunakan opsi Alat Gambar untuk Alat AOI."
+    "selectingDrawToolErrorMessage": "Pilih setidaknya satu alat menggambar atau layer pilihan untuk menggunakan opsi Alat Gambar untuk Alat AOI.",
+    "sortingSettingsLegend": "Pengaturan Urutan",
+    "ascendingLabel": "Naik",
+    "descendingLabel": "Turun",
+    "sortFieldSelectLabel": "Pilih kolom urutan",
+    "statisticsCountLabel": "Statistik: Jumlah",
+    "statisticsTotalLengthLabel": "Statistik: Panjang Total",
+    "statisticsTotalAreaLabel": "Statistik: Area Total"
   },
   "downloadTab": {
     "downloadLegend": "Pengaturan Unduhan",

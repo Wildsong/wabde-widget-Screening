@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Copyright © Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the 'License');
@@ -35,6 +35,7 @@ define({
     "allowGroupingLabel": "Groepeer de objecten per veld met dezelfde waarde",
     "groupingHintDescription": "Tip: standaard worden alle objecten met dezelfde waarde voor de geselecteerde velden gegroepeerd om als een enkele invoer in het rapport te verschijnen. Schakel de groepering op soortgelijke attributen uit om in plaats daarvan een vermelding voor elk object weer te geven.",
     "addLayersHintText": "Hint: Kies de lagen en velden die moeten worden opgenomen in de analyse en het rapport",
+    "queryCapabilityHintText": "Alleen lagen met query mogelijkheden worden vermeld.",
     "addLayerNameTitle": "Laagnaam",
     "addFieldsLabel": "Veld toevoegen",
     "addFieldsPopupTitle": "Velden selecteren",
@@ -71,7 +72,14 @@ define({
     "drawToolPolygonLabel": "Vlak",
     "drawToolCircleLabel": "Cirkel",
     "selectDrawToolsText": "Kies de tekentools die beschikbaar zijn om het interessegebied te creëren",
-    "selectingDrawToolErrorMessage": "Kies ten minste één tekentool of selectielaag om de optie Tekentools te gebruiken voor interessegebied-tools."
+    "selectingDrawToolErrorMessage": "Kies ten minste één tekentool of selectielaag om de optie Tekentools te gebruiken voor interessegebied-tools.",
+    "sortingSettingsLegend": "Instellingen sorteren",
+    "ascendingLabel": "Oplopend",
+    "descendingLabel": "Aflopend",
+    "sortFieldSelectLabel": "Sorteerveld selecteren",
+    "statisticsCountLabel": "Statistieken: aantal",
+    "statisticsTotalLengthLabel": "Statistieken: totale lengte",
+    "statisticsTotalAreaLabel": "Statistieken: totaal gebied"
   },
   "downloadTab": {
     "downloadLegend": "Downloadinstellingen",
